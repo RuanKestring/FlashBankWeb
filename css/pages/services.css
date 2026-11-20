@@ -6,7 +6,7 @@
 /* Barra de progresso (cofrinhos e limite do cartão) */
 .progress { height: 10px; border-radius: 999px; background: var(--olive-100); overflow: hidden; }
 .progress i { display: block; height: 100%; background: var(--olive-700); border-radius: 999px; }
-/* Visual do cartão */
+/* Visual do cartão; .is-blocked deixa cinza quando bloqueado */
 .bank-card { min-height: 150px; justify-content: space-between; }
 .bank-card strong { font-size: 1.2rem; letter-spacing: .08em; }
 .bank-card.is-blocked { background: #6f6f62; border-color: #6f6f62; }

@@ -10,7 +10,7 @@ export async function init() {
   // Lembra se o usuário ocultou o saldo
   let hidden = store.get("saldoHidden", false);
 
-  // Redesenha o saldo 
+  // Redesenha o saldo (valor ou '••••') e o rótulo do botão
   const paint = () => {
     saldo.textContent = hidden ? "R$ ••••••" : brl(total);
     btn.setAttribute("aria-pressed", hidden);

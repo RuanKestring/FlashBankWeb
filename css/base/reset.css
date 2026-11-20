@@ -19,3 +19,5 @@ main:focus { outline: none; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
 /* Faixa de aviso quando a página é aberta sem servidor (file://) */
 .file-warning { margin: 0; padding: 12px 16px; background: var(--wine-800); color: var(--white); font-size: .9rem; position: relative; z-index: 60; }
+/* O atributo hidden sempre vence o display definido nas classes */
+[hidden] { display: none !important; }

@@ -2,7 +2,7 @@
 import { getJSON } from "../core/api.js";
 import { brl } from "../core/format.js";
 
-// Converte os valores em pontos
+// Converte os valores em pontos de uma polyline SVG (sem biblioteca)
 function lineChart(values) {
   const w = 600, h = 180, pad = 10;
   const min = Math.min(...values), max = Math.max(...values);

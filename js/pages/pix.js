@@ -1,4 +1,4 @@
-// Tela Pix - envia e desconta do saldo.
+// Tela Pix: envia e desconta do saldo.
 import { brl, toast } from "../core/format.js";
 import { getAccount, addTx } from "../core/bank.js";
 

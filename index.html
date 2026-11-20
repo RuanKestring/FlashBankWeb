@@ -8,33 +8,68 @@
 </head>
 <body data-page="login" data-root="">
   <div class="login">
-    <section class="login__hero">
-      <strong class="logo">FlashBank</strong>
-      <h1>Sua vida acontece.<br>Seu banco acompanha.</h1>
-      <p>Da rotina aos próximos planos, cuide do seu dinheiro com a tranquilidade de ter o FlashBank ao seu lado.</p>
-      <img class="login__photo" src="assets/img/imagem-tela-login.png" alt="Mulher sorrindo enquanto usa o notebook em um ambiente aconchegante" width="640" height="420">
-      <small><span class="icon" data-icon="seguro" aria-hidden="true" style="width:16px;height:16px;vertical-align:-3px"></span> Sua segurança vem em primeiro lugar. Sempre.</small>
-    </section>
-    <form class="login__form" id="login-form" novalidate>
-      <div class="login__user">
-        <div class="avatar avatar--lg" aria-hidden="true">M</div>
-        <h2>Olá, Maria</h2>
-        <small>Que bom ter você de volta.</small>
+    <!-- Cabeçalho-->
+    <header class="login__top">
+      <a class="login__logo" href="index.html"><img src="assets/icons/Logo.svg" alt="FlashBank, página de login" height="32"></a>
+      <div class="login__top-right">
+        <span>Seu banco, sempre perto.</span>
+        <a class="help-link" href="#" data-soon>
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>
+          Precisa de ajuda?
+        </a>
       </div>
-      <label class="field">CPF
-        <input id="cpf" name="cpf" aria-describedby="login-error" inputmode="numeric" autocomplete="username" placeholder="000.000.000-00" maxlength="14">
-      </label>
-      <label class="field">Senha
-        <div class="input-wrap">
-          <input id="senha" name="senha" type="password" aria-describedby="login-error" autocomplete="current-password" placeholder="Sua senha">
-          <button class="icon-btn" id="toggle-senha" type="button" aria-label="Mostrar senha" aria-pressed="false"><span aria-hidden="true">👁</span></button>
+    </header>
+
+    <main class="login__main">
+      <section class="login__hero" aria-labelledby="hero-title">
+        <p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span>Mais tempo para o que importa</p>
+        <h1 id="hero-title">Sua vida acontece.<br>Seu banco acompanha.</h1>
+        <p class="hero__text">Da rotina aos próximos planos, cuide do seu dinheiro com a tranquilidade de ter o FlashBank ao seu lado.</p>
+        <figure class="hero__photo">
+          <img src="assets/img/imagem-tela-login.png" alt="Mulher sorrindo enquanto usa o notebook em um ambiente aconchegante" width="1160" height="566">
+          <figcaption class="photo-tag">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4M22 5h-4"/></svg>
+            Mais simples. Mais do seu jeito.
+          </figcaption>
+        </figure>
+        <p class="hero__secure"><span class="icon" data-icon="seguro" aria-hidden="true"></span>Sua segurança vem em primeiro lugar. Sempre.</p>
+      </section>
+
+
+      <form class="login__form" id="login-form" novalidate>
+        <div class="login__user">
+          <span class="avatar avatar--soft avatar--xl" aria-hidden="true"><span class="icon" data-icon="avatar"></span></span>
+          <h2 id="greet">Olá, Maria</h2>
+          <p class="muted" id="greet-sub">Que bom ter você de volta.</p>
         </div>
-      </label>
-      <p class="form-error" id="login-error" role="alert"></p>
-      <button class="btn btn--primary btn--block" type="submit">Entrar</button>
-      <button class="btn btn--outline btn--block" id="faceid" type="button"><span class="icon" data-icon="scan-face" aria-hidden="true"></span>Entrar com Face ID</button>
-      
-    </form>
+        <div class="saved-account" id="saved-account">
+          <span>CPF <b id="cpf-masked">***.000.000-**</b></span>
+          <button class="link" id="switch-account" type="button">Trocar conta</button>
+        </div>
+        <div class="field" id="cpf-field" hidden>
+          <label for="cpf">CPF</label>
+          <input id="cpf" name="cpf" inputmode="numeric" autocomplete="username" placeholder="000.000.000-00" maxlength="14" aria-describedby="login-error">
+        </div>
+
+        <div class="field field--password">
+          <label for="senha">Senha</label>
+          <div class="input-wrap">
+            <input id="senha" name="senha" type="password" autocomplete="current-password" placeholder="Sua senha" aria-describedby="login-error">
+            <button class="icon-btn icon-btn--soft" id="toggle-senha" type="button" aria-label="Mostrar senha" aria-pressed="false">
+              <svg class="eye-off" aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.7 5.1A10 10 0 0 1 12 5c7 0 10 7 10 7a13 13 0 0 1-1.7 2.7M6.6 6.7A13 13 0 0 0 2 12s3 7 10 7a9.7 9.7 0 0 0 5.4-1.6M2 2l20 20M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+              <svg class="eye-on" hidden aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+          <a class="link forgot" href="#" data-soon>Esqueceu a senha?</a>
+        </div>
+
+        <p class="form-error" id="login-error" role="alert"></p>
+        <button class="btn btn--primary btn--block btn--lg" type="submit">Entrar</button>
+        <div class="divider" role="separator"><span>ou</span></div>
+        <button class="btn btn--outline btn--block btn--lg" id="faceid" type="button"><span class="icon" data-icon="scan-face" aria-hidden="true"></span>Entrar com Face ID</button>
+        <p class="login__note"><span class="icon" data-icon="cadeado" aria-hidden="true"></span>Ambiente seguro. Seus dados estão protegidos.</p>
+      </form>
+    </main>
   </div>
   <script type="module" src="js/app.js"></script>
 </body>

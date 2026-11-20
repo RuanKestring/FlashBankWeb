@@ -7,7 +7,7 @@
 /* Card suave (verde-claro) */
 .card--soft { background: var(--olive-100); border-color: var(--olive-100); }
 .card__head { display: flex; justify-content: space-between; align-items: center; }
-/* Grade genérica*/
+/* Grade genérica; .grid--2/3/4/6 definem as colunas */
 .grid { display: grid; gap: 16px; }
 .grid--2 { grid-template-columns: 2fr 1fr; }
 .grid--3 { grid-template-columns: repeat(3, 1fr); }

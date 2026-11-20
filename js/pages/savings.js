@@ -1,4 +1,4 @@
-// Tela Cofrinhos progresso e depósito.
+// Tela Cofrinhos: progresso e depósito.
 import { getJSON } from "../core/api.js";
 import { brl, toast } from "../core/format.js";
 import { getAccount, addTx } from "../core/bank.js";

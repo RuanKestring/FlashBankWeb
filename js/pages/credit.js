@@ -1,4 +1,4 @@
-// Tela Crédito: simulador de parcelas .
+// Tela Crédito: simulador de parcelas (valores de exemplo).
 import { brl } from "../core/format.js";
 import { getAccount } from "../core/bank.js";
 
@@ -18,7 +18,7 @@ export async function init() {
     const n = Number(document.getElementById("cr-parcelas").value);
     if (!(valor >= 100)) { error.textContent = "O valor mínimo é R$ 100,00."; return; }
     if (valor > limite) { error.textContent = `O valor máximo é ${brl(limite)}.`; return; }
-    // Fórmula da parcela fixa -  P·i / (1 − (1+i)^−n)
+    // Fórmula da parcela fixa (Price): P·i / (1 − (1+i)^−n)
     const i = taxa / 100;
     const parcela = (valor * i) / (1 - Math.pow(1 + i, -n));
     result.hidden = false;

@@ -12,6 +12,8 @@ export async function init() {
   const inputs = Object.values(ids).map((id) => document.getElementById(id));
   const actions = document.getElementById("edit-actions");
 
+  // Fora da edição, e-mail e celular aparecem mascarados (como no Figma)
+  // Fora da edição mostra mascarado; ao editar, mostra o valor real
   const paintFields = (editing) => {
     for (const [key, id] of Object.entries(ids))
       document.getElementById(id).value = !editing && masks[key] ? masks[key](user[key]) : user[key];
@@ -34,7 +36,6 @@ export async function init() {
 
   document.getElementById("edit").addEventListener("click", () => setEditing(true));
   document.getElementById("cancel").addEventListener("click", () => setEditing(false));
-
   // Salva no localStorage e atualiza a tela
   document.getElementById("save").addEventListener("click", () => {
     for (const [key, id] of Object.entries(ids)) user[key] = document.getElementById(id).value.trim();
@@ -43,6 +44,7 @@ export async function init() {
     setEditing(false);
     toast("Alterações salvas.");
   });
+  // Copia agência e conta para a área de transferência
   document.getElementById("share").addEventListener("click", async () => {
     const text = `FlashBank · Agência ${user.agencia} · Conta ${user.conta}`;
     try { await navigator.clipboard.writeText(text); toast("Dados copiados."); } catch { toast(text); }

@@ -1,13 +1,12 @@
 /* Tela Investimentos. */
 .stat { display: flex; flex-direction: column; gap: 4px; }
 .stat strong { font-size: 1.5rem; }
-/* Abas 6m / 1a / Tudo do gráfico */
 .tabs { display: flex; gap: 4px; }
 .tabs button { border: 1px solid var(--line); background: var(--white); border-radius: 8px; padding: 4px 10px; font-size: .75rem; }
 .tabs button.is-active { background: var(--olive-700); border-color: var(--olive-700); color: var(--white); }
 .chart svg { width: 100%; height: 180px; }
 .donut-wrap { display: flex; align-items: center; gap: 20px; }
-/* Gráfico de rosca */
+/* Gráfico de rosca*/
 .donut { width: 140px; height: 140px; border-radius: 50%; position: relative; flex-shrink: 0; }
 .donut::after { content: ""; position: absolute; inset: 28px; border-radius: 50%; background: var(--white); }
 .legend { flex: 1; }

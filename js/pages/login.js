@@ -1,36 +1,60 @@
-// Tela de login: máscara de CPF, validação e redirecionamento.
+// Tela de login: conta salva (CPF mascarado), "Trocar conta", validação e redirecionamento.
 import { getJSON } from "../core/api.js";
 import { login, isLogged } from "../core/auth.js";
-import { digits, formatCpf, toast } from "../core/format.js";
+import { digits, formatCpf, maskCpf, toast } from "../core/format.js";
 
+// Chamada pelo app.js ao abrir a página
 export async function init() {
   // Quem já está logado vai direto para a Home
   if (isLogged()) { location.href = "pages/home.html"; return; }
+
+  const user = await getJSON("user");
   const form = document.getElementById("login-form");
   const cpf = document.getElementById("cpf");
   const senha = document.getElementById("senha");
   const error = document.getElementById("login-error");
+  let useSaved = true; // true = usa o CPF da conta salva; false = o usuário digita outro
 
-  // Aplica a máscara enquanto digita
+  // Preenche o cumprimento e o CPF mascarado a partir dos dados do usuário
+  document.getElementById("greet").textContent = `Olá, ${user.nome}`;
+  document.getElementById("cpf-masked").textContent = maskCpf(user.cpf);
+
+  // "Trocar conta": esconde o resumo e mostra o campo de CPF
+  document.getElementById("switch-account").addEventListener("click", () => {
+    useSaved = false;
+    document.getElementById("saved-account").hidden = true;
+    document.getElementById("cpf-field").hidden = false;
+    document.getElementById("greet").textContent = "Olá!";
+    document.getElementById("greet-sub").textContent = "Digite seu CPF para entrar.";
+    cpf.focus();
+  });
+
+  // Máscara de CPF enquanto digita
   cpf.addEventListener("input", () => (cpf.value = formatCpf(cpf.value)));
-  // Mostrar/ocultar senha e atualizar o rótulo para leitores de tela
-  document.getElementById("toggle-senha").addEventListener("click", () => {
+
+  // Mostrar/ocultar senha: troca o tipo do campo, o ícone e o rótulo (leitores de tela)
+  const toggle = document.getElementById("toggle-senha");
+  toggle.addEventListener("click", () => {
     const show = senha.type === "password";
     senha.type = show ? "text" : "password";
-    const t = document.getElementById("toggle-senha");
-    t.setAttribute("aria-pressed", show);
-    t.setAttribute("aria-label", show ? "Ocultar senha" : "Mostrar senha");
+    toggle.setAttribute("aria-pressed", show);
+    toggle.setAttribute("aria-label", show ? "Ocultar senha" : "Mostrar senha");
+    toggle.querySelector(".eye-on").hidden = !show;
+    toggle.querySelector(".eye-off").hidden = show;
   });
-  document.getElementById("faceid").addEventListener("click", () => toast("Face ID disponível em breve."));
 
-  // Ao enviar valida, compara com data/user.json e entra
-  form.addEventListener("submit", async (e) => {
+  document.getElementById("faceid").addEventListener("click", () => toast("Face ID disponível em breve."));
+  document.querySelectorAll("[data-soon]").forEach((el) =>
+    el.addEventListener("click", (e) => { e.preventDefault(); toast("Esta função chega em breve."); }));
+
+  // Ao enviar: valida e compara com data/user.json
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     error.textContent = "";
-    if (digits(cpf.value).length !== 11) { error.textContent = "Digite um CPF com 11 números."; return; }
-    if (!senha.value) { error.textContent = "Digite sua senha."; return; }
-    const user = await getJSON("user");
-    if (digits(cpf.value) !== user.cpf || senha.value !== user.senha) {
+    const typed = useSaved ? user.cpf : digits(cpf.value);
+    if (typed.length !== 11) { error.textContent = "Digite um CPF com 11 números."; cpf.focus(); return; }
+    if (!senha.value) { error.textContent = "Digite sua senha."; senha.focus(); return; }
+    if (typed !== user.cpf || senha.value !== user.senha) {
       error.textContent = "CPF ou senha incorretos. Confira os dados e tente de novo.";
       return;
     }
