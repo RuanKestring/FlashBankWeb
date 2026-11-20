@@ -1,0 +1,20 @@
+<!-- Abre/fecha o menu no celular-->
+<button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+<form class="topbar__search" role="search" id="search-form">
+  <span class="icon" data-icon="lupa" aria-hidden="true"></span>
+  <input type="search" name="q" placeholder="Buscar no FlashBank" aria-label="Buscar no FlashBank">
+</form>
+<!-- Botões só com ícone: aria-label dá o nome para leitores de tela -->
+<div class="topbar__actions">
+  <button class="icon-btn" type="button" aria-label="Mensagens" data-soon><span class="icon" data-icon="mensagem2" aria-hidden="true"></span></button>
+  <button class="icon-btn has-dot" type="button" aria-label="Notificações, há novas" data-soon><span class="icon" data-icon="notificacao" aria-hidden="true"></span></button>
+</div>
+<span class="topbar__divider" aria-hidden="true"></span>
+
+<a class="topbar__user" href="{{root}}pages/minha-conta.html">
+  <span class="avatar avatar--soft" aria-hidden="true"><span class="icon" data-icon="avatar"></span></span>
+  <div><strong id="user-name">Maria</strong><small>Minha conta</small></div>
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+</a>

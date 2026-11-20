@@ -1,0 +1,14 @@
+/* Campos de formulário. */
+/* Rótulo acima do campo */
+.field { display: flex; flex-direction: column; gap: 6px; font-size: .8rem; }
+.field input { padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--cream); }
+/* Campo somente leitura em cinza (Minha conta fora da edição) */
+.field input:read-only { color: var(--muted); }
+.field input:not(:read-only) { background: var(--white); border-color: var(--olive-700); }
+/* Campo + botão lado a lado (ex.: senha com olho) */
+.input-wrap { display: flex; gap: 8px; }
+.input-wrap input { flex: 1; }
+/* Botão quadrado só com ícone */
+.icon-btn { border: 1px solid var(--line); background: var(--white); border-radius: var(--radius-sm); padding: 0 12px; }
+/* Mensagem de erro (anunciada por leitor de tela via role=alert) */
+.form-error { color: var(--wine-800); font-size: .8rem; min-height: 1.1em; }

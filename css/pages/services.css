@@ -1,0 +1,16 @@
+/* Estilos das telas Pix, Cartões, Cofrinhos e Crédito. */
+.field select { padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--white); }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+/* Barra de progresso (cofrinhos e limite do cartão) */
+.progress { height: 10px; border-radius: 999px; background: var(--olive-100); overflow: hidden; }
+.progress i { display: block; height: 100%; background: var(--olive-700); border-radius: 999px; }
+/* Visual do cartão */
+.bank-card { min-height: 150px; justify-content: space-between; }
+.bank-card strong { font-size: 1.2rem; letter-spacing: .08em; }
+.bank-card.is-blocked { background: #6f6f62; border-color: #6f6f62; }
+/* Caixa com o resultado da simulação de crédito */
+.result { background: var(--olive-100); border-radius: var(--radius-sm); padding: 14px; }
+.result strong { font-size: 1.4rem; display: block; }
+.form-ok { color: var(--pos); font-size: .8rem; min-height: 1.1em; }

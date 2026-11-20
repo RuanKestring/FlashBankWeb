@@ -1,0 +1,32 @@
+/* Cabeçalho: busca, botões de mensagem/notificação e usuário. */
+/* Barra superior em linha */
+.topbar { display: flex; align-items: center; gap: 12px; padding: 12px 32px; border-bottom: 1px solid var(--line); }
+/* Campo de busca arredondado com ícone de lupa */
+.topbar__search { flex: 0 1 380px; display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
+/* Contorno no campo todo quando o input recebe foco */
+.topbar__search:focus-within { outline: 2px solid var(--wine-800); outline-offset: 2px; }
+.topbar__search input { flex: 1; min-width: 0; border: 0; background: none; outline: none; }
+.topbar__actions { margin-left: auto; display: flex; gap: 8px; }
+.topbar .icon-btn { width: 44px; height: 44px; padding: 0; display: grid; place-items: center; border-radius: 50%; }
+/* Botão de abrir o menu: só aparece no celular/tablet */
+.topbar .menu-toggle { display: none; }
+/* Link com avatar e nome que leva a Minha conta */
+.topbar__user { display: flex; align-items: center; gap: 10px; padding: 4px 8px; border-radius: var(--radius-sm); }
+.topbar__user:hover { background: var(--olive-100); }
+.topbar__user small { display: block; line-height: 1.1; }
+/* Bolinha do avatar (também usada na tela de login) */
+.avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--olive-700); display: grid; place-items: center; font-weight: 700; color: var(--white); }
+.avatar--lg { width: 64px; height: 64px; font-size: 1.4rem; }
+@media (max-width: 900px) { .topbar { padding: 10px 16px; } .topbar .menu-toggle { display: grid; } }
+@media (max-width: 560px) { .topbar__user > div { display: none; } .topbar__search { flex: 1; } .topbar__actions { margin-left: 0; } }
+.topbar { background: var(--cream); min-height: 72px; }
+.topbar .icon-btn { background: var(--olive-100); border: 0; color: var(--olive-700); }
+/* Bolinha vinho de 'há notificações' */
+.has-dot { position: relative; }
+.has-dot::after { content: ""; position: absolute; top: 11px; right: 12px; width: 7px; height: 7px; border-radius: 50%; background: var(--wine-800); }
+.topbar__divider { width: 1px; height: 32px; background: var(--line); }
+.topbar__actions { margin-left: auto; }
+.avatar--soft { background: var(--olive-100); color: var(--olive-700); }
+.avatar--soft .icon { width: 22px; height: 22px; }
+.topbar__user strong { font-size: .9rem; }
+@media (max-width: 560px) { .topbar__divider, .topbar__user svg { display: none; } }

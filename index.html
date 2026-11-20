@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashBank · Login</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="login" data-root="">
+  <div class="login">
+    <section class="login__hero">
+      <strong class="logo">FlashBank</strong>
+      <h1>Sua vida acontece.<br>Seu banco acompanha.</h1>
+      <p>Da rotina aos próximos planos, cuide do seu dinheiro com a tranquilidade de ter o FlashBank ao seu lado.</p>
+      <img class="login__photo" src="assets/img/imagem-tela-login.png" alt="Mulher sorrindo enquanto usa o notebook em um ambiente aconchegante" width="640" height="420">
+      <small><span class="icon" data-icon="seguro" aria-hidden="true" style="width:16px;height:16px;vertical-align:-3px"></span> Sua segurança vem em primeiro lugar. Sempre.</small>
+    </section>
+    <form class="login__form" id="login-form" novalidate>
+      <div class="login__user">
+        <div class="avatar avatar--lg" aria-hidden="true">M</div>
+        <h2>Olá, Maria</h2>
+        <small>Que bom ter você de volta.</small>
+      </div>
+      <label class="field">CPF
+        <input id="cpf" name="cpf" aria-describedby="login-error" inputmode="numeric" autocomplete="username" placeholder="000.000.000-00" maxlength="14">
+      </label>
+      <label class="field">Senha
+        <div class="input-wrap">
+          <input id="senha" name="senha" type="password" aria-describedby="login-error" autocomplete="current-password" placeholder="Sua senha">
+          <button class="icon-btn" id="toggle-senha" type="button" aria-label="Mostrar senha" aria-pressed="false"><span aria-hidden="true">👁</span></button>
+        </div>
+      </label>
+      <p class="form-error" id="login-error" role="alert"></p>
+      <button class="btn btn--primary btn--block" type="submit">Entrar</button>
+      <button class="btn btn--outline btn--block" id="faceid" type="button"><span class="icon" data-icon="scan-face" aria-hidden="true"></span>Entrar com Face ID</button>
+      
+    </form>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+/* Tela Minha conta. */
+/* Card do perfil: avatar, nome e botão Editar */
+.profile { flex-direction: row; align-items: center; gap: 20px; padding: 24px; }
+.avatar--xl { width: 72px; height: 72px; }
+.avatar--xl .icon { width: 40px; height: 40px; }
+.profile__info { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.profile__info h2 { font-size: 1.5rem; }
+/* Campos de dados pessoais em 2 colunas */
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; }
+.edit-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+/* Agência e conta lado a lado */
+.account-data { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-top: 1px solid var(--line); padding-top: 14px; }
+.account-data strong { display: block; font-size: 1.15rem; }
+.access-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+/* Linha de 'Segurança e acesso' (ícone, texto, seta) */
+.access-item { display: flex; align-items: center; gap: 12px; padding: 8px 4px; border-radius: var(--radius-sm); min-height: 44px; }
+.access-item:hover { background: var(--olive-100); }
+.access-item > div { flex: 1; }
+.access-item strong, .access-item small { display: block; }
+.title-icon { display: flex; align-items: center; gap: 10px; }
+.card-link { margin-top: auto; }
+@media (max-width: 560px) { .fields, .access-list { grid-template-columns: 1fr; } .profile { flex-wrap: wrap; } }

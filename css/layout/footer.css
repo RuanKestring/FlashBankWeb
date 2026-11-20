@@ -1,0 +1,3 @@
+/* Rodapé com texto da marca e links legais. */
+.footer { display: flex; justify-content: space-between; padding: 14px 32px; color: var(--muted); font-size: .75rem; }
+.footer a:hover { text-decoration: underline; }

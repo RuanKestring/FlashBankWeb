@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashBank · Cartões</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="app" data-page="cards" data-root="../">
+  <!-- Menu lateral-->
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <!-- Cabeçalho-->
+  <header id="topbar" class="topbar"></header>
+  <main class="content">
+    <div class="page-head"><div><h1>Cartões</h1><p class="muted">Veja seu cartão, a fatura e bloqueie quando precisar.</p></div><a class="btn btn--outline" href="home.html">Voltar ao início</a></div>
+    <div class="grid grid--2">
+      <section class="card card--olive bank-card" id="card-visual"><small>FlashBank</small><strong id="card-num">•••• •••• •••• 0000</strong><small id="card-status"></small></section>
+      <section class="card"><h2>Controles</h2><p class="muted" id="card-help">Bloqueie o cartão se perdê-lo. Você pode desbloquear quando quiser.</p><button class="btn btn--primary" id="card-toggle" type="button">Bloquear cartão</button></section>
+    </div>
+    <div class="grid grid--2">
+      <section class="card"><h2>Fatura atual</h2><strong id="card-fatura"></strong><small id="card-venc"></small><div class="progress" aria-hidden="true"><i id="card-bar"></i></div><small id="card-limite"></small></section>
+      <section class="card card--soft"><h2>Precisa de mais limite?</h2><p class="muted">Simule um crédito pessoal sem compromisso.</p><a class="link" href="credito.html">Ir para Crédito</a></section>
+    </div>
+  </main>
+  <footer class="footer"><span>FlashBank. Com você em cada plano.</span><span>Privacidade · Segurança · Ajuda</span></footer>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

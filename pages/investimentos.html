@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashBank · Investimentos</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="app" data-page="investments" data-root="../">
+  <!-- Menu lateral-->
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <!-- Cabeçalho-->
+  <header id="topbar" class="topbar"></header>
+  <main class="content">
+    <div class="page-head"><div><h1>Investimentos</h1><p class="muted">Acompanhe sua carteira e planeje seus próximos passos.</p></div>
+      <div class="page-head__actions"><button class="btn btn--outline" data-soon type="button">Resgatar</button><button class="btn btn--primary" data-soon type="button">Investir mais</button></div></div>
+    <div class="grid grid--3">
+      <section class="card card--olive stat"><small>Total investido</small><strong id="inv-total"></strong></section>
+      <section class="card stat"><small>Rendimento nos últimos 12 meses</small><strong id="inv-rend"></strong></section>
+      <section class="card stat"><small>Disponível na conta investimento</small><strong id="inv-disp"></strong></section>
+    </div>
+    <div class="grid grid--2">
+      <section class="card chart"><div class="card__head"><h2>Evolução do patrimônio</h2><div class="tabs" id="tabs"><button data-range="6m">6m</button><button data-range="1a" class="is-active">1a</button><button data-range="tudo">Tudo</button></div></div><div id="chart"></div></section>
+      <section class="card"><h2>Distribuição da carteira</h2><div class="donut-wrap"><div class="donut" id="donut"></div><ul class="legend" id="legend"></ul></div></section>
+    </div>
+    <section class="card"><h2>Meus investimentos</h2><table class="table"><thead><tr><th>Produto</th><th>Valor aplicado</th><th>Participação</th></tr></thead><tbody id="inv-table"></tbody></table></section>
+  </main>
+  <footer class="footer"><span>FlashBank. Com você em cada plano.</span><span>Privacidade · Segurança · Ajuda</span></footer>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

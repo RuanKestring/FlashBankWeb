@@ -1,0 +1,18 @@
+/* Esqueleto das telas internas: menu à esquerda, cabeçalho, conteúdo e rodapé. */
+/* Grid de 2 colunas: menu + área principal (3 linhas: topbar, conteúdo, rodapé) */
+.app { display: grid; grid-template-columns: var(--sidebar-w) minmax(0, 1fr); grid-template-rows: auto 1fr auto; min-height: 100vh; }
+/* O menu ocupa todas as linhas da primeira coluna */
+.app .sidebar { grid-row: 1 / -1; }
+/* Área principal: cards empilhados com espaçamento */
+.content { padding: 32px 40px; display: flex; flex-direction: column; gap: 20px; }
+/* Cabeçalho da página: título à esquerda, ações à direita */
+.page-head { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
+.page-head__actions { display: flex; gap: 8px; flex-wrap: wrap; }
+/* Fundo escuro atrás do menu aberto no celular */
+.backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, .45); z-index: 20; }
+/* Tablet/celular: vira uma coluna e o menu sai do grid */
+@media (max-width: 900px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .app .sidebar { grid-row: auto; }
+  .content { padding: 16px; }
+}

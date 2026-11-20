@@ -1,0 +1,32 @@
+/* Ícones do Figma em assets/icons. Pintados com a cor do texto (currentColor).
+   Use sempre aria-hidden="true" quando houver texto ao lado; sozinho, ponha aria-label no botão/link. */
+.icon { display: inline-block; flex: none; width: 20px; height: 20px; background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+.icon--lg { width: 24px; height: 24px; }
+.icon[data-icon="avancar"] { --icon: url("../../assets/icons/icon-avancar.svg"); }
+.icon[data-icon="avatar"] { --icon: url("../../assets/icons/icon-avatar.svg"); }
+.icon[data-icon="cadeado"] { --icon: url("../../assets/icons/icon-cadeado.svg"); }
+.icon[data-icon="carrinho-compra"] { --icon: url("../../assets/icons/icon-carrinho-compra.svg"); }
+.icon[data-icon="carro"] { --icon: url("../../assets/icons/icon-carro.svg"); }
+.icon[data-icon="cartao"] { --icon: url("../../assets/icons/icon-cartao.svg"); }
+.icon[data-icon="carteira"] { --icon: url("../../assets/icons/icon-carteira.svg"); }
+.icon[data-icon="casa"] { --icon: url("../../assets/icons/icon-casa.svg"); }
+.icon[data-icon="celular"] { --icon: url("../../assets/icons/icon-celular.svg"); }
+.icon[data-icon="cofrinho"] { --icon: url("../../assets/icons/icon-cofrinho.svg"); }
+.icon[data-icon="crescimento"] { --icon: url("../../assets/icons/icon-crescimento.svg"); }
+.icon[data-icon="dinheiro"] { --icon: url("../../assets/icons/icon-dinheiro.svg"); }
+.icon[data-icon="log-out"] { --icon: url("../../assets/icons/icon-log-out.svg"); }
+.icon[data-icon="lupa"] { --icon: url("../../assets/icons/icon-lupa.svg"); }
+.icon[data-icon="mensagem"] { --icon: url("../../assets/icons/icon-mensagem.svg"); }
+.icon[data-icon="mensagem2"] { --icon: url("../../assets/icons/icon-mensagem2.svg"); }
+.icon[data-icon="notificacao"] { --icon: url("../../assets/icons/icon-notificacao.svg"); }
+.icon[data-icon="pix"] { --icon: url("../../assets/icons/icon-pix.svg"); }
+.icon[data-icon="scan-face"] { --icon: url("../../assets/icons/icon-scan-face.svg"); }
+.icon[data-icon="scan-line"] { --icon: url("../../assets/icons/icon-scan-line.svg"); }
+.icon[data-icon="seguro"] { --icon: url("../../assets/icons/icon-seguro.svg"); }
+.icon[data-icon="investimentos"] { --icon: url("../../assets/icons/icon-investimentos.svg"); }
+.card-photo { max-width: 160px; height: auto; border-radius: 8px; }
+.grid--6 { grid-template-columns: repeat(6, 1fr); }
+@media (max-width: 900px) { .grid--6 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .grid--6 { grid-template-columns: repeat(2, 1fr); } }
+.quick .icon { color: var(--wine-800); width: 24px; height: 24px; }

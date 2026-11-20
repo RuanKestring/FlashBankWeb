@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashBank · Cofrinhos</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="app" data-page="savings" data-root="../">
+  <!-- Menu lateral -->
+  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
+  <!-- Cabeçalho -->
+  <header id="topbar" class="topbar"></header>
+  <main class="content">
+    <div class="page-head"><div><h1>Cofrinhos</h1><p class="muted">Guarde dinheiro para cada objetivo.</p></div><a class="btn btn--outline" href="investimentos.html">Ver investimentos</a></div>
+    <div class="grid grid--2">
+      <section class="card"><h2>Meus cofrinhos</h2><ul id="cofrinhos"></ul></section>
+      <section class="card"><h2>Guardar dinheiro</h2><small>Saldo disponível: <b id="cof-saldo"></b></small>
+        <form class="stack" id="cof-form" novalidate>
+          <label class="field">Cofrinho<select id="cof-select"></select></label>
+          <label class="field">Valor (R$)<input id="cof-valor" type="number" min="0.01" step="0.01" placeholder="0,00"></label>
+          <p class="form-error" id="cof-error" role="alert"></p><p class="form-ok" id="cof-ok" role="status"></p>
+          <button class="btn btn--primary" type="submit">Guardar</button>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer class="footer"><span>FlashBank. Com você em cada plano.</span><span>Privacidade · Segurança · Ajuda</span></footer>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

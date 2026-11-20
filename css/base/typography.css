@@ -1,0 +1,9 @@
+/* Tipografia: tamanhos de título e classes de texto auxiliares. */
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: 1.6rem; font-weight: 700; }
+h2 { font-size: 1.05rem; font-weight: 600; }
+/* Texto secundário (cinza) */
+small, .muted { color: var(--muted); font-size: .8rem; }
+/* Valores negativos (vinho) e positivos (verde) nas movimentações */
+.neg { color: var(--wine-800); font-weight: 600; }
+.pos { color: var(--pos); font-weight: 600; }

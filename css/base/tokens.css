@@ -1,0 +1,26 @@
+/* Design tokens: valores do Figma em um só lugar. Mudou a cor aqui, muda no site todo. */
+:root {
+  /* Verde-oliva: cards de destaque e painel do login */
+  --olive-700: #5b5f2a;
+  --olive-300: #b9b98a;
+  --olive-100: #e8e8cf;
+  /* Vinho: botões principais, item ativo e links */
+  --wine-800: #6b0f1a;
+  --wine-50: #f3e3e5;
+  /* Fundo da aplicação e do menu lateral */
+  --cream: #faf8ee;
+  --sidebar-bg: #fdfcf6;
+  --white: #ffffff;
+  /* Cores de texto e bordas; --muted tem contraste mínimo AA */
+  --text: #2b2b22;
+  --muted: #5f5f4e; /* contraste AA sobre o fundo creme */
+  --line: #e6e1cc;
+  --pos: #3f6b2a;
+  /* Arredondamento dos cards e dos campos */
+  --radius: 16px;
+  --radius-sm: 10px;
+  /* Largura do menu lateral */
+  --sidebar-w: 232px;
+  /* Fonte padrão (cai para a do sistema se não carregar) */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}

@@ -1,0 +1,18 @@
+/* Cards e grades de layout. */
+/* Caixa branca com borda e cantos arredondados */
+.card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+/* Card de destaque em verde-oliva */
+.card--olive { background: var(--olive-700); border-color: var(--olive-700); color: var(--white); }
+.card--olive .muted, .card--olive small { color: #e3e3c4; }
+/* Card suave (verde-claro) */
+.card--soft { background: var(--olive-100); border-color: var(--olive-100); }
+.card__head { display: flex; justify-content: space-between; align-items: center; }
+/* Grade genérica*/
+.grid { display: grid; gap: 16px; }
+.grid--2 { grid-template-columns: 2fr 1fr; }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+/* Tablet: grades viram 2 colunas */
+@media (max-width: 900px) { .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr 1fr; } }
+/* Celular: grades viram 1 coluna */
+@media (max-width: 560px) { .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; } }

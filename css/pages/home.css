@@ -1,0 +1,16 @@
+/* Tela Início. */
+/* Card de saldo */
+.balance { display: flex; flex-direction: column; gap: 8px; }
+.balance__value { font-size: 2rem; font-weight: 700; }
+.balance .link { color: var(--white); }
+/* Atalhos de ações rápidas */
+.quick { display: flex; flex-direction: column; gap: 4px; padding: 14px; }
+.quick strong { color: var(--wine-800); }
+/* Linha de movimentação (descrição à esquerda, valor à direita) */
+.tx { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.tx:last-child { border-bottom: 0; }
+.tx small { display: block; }
+/* Barrinhas de progresso do card 'Pequenos passos' */
+.steps { display: flex; gap: 4px; }
+.steps span { flex: 1; height: 14px; border-radius: 3px; background: var(--olive-300); }
+.steps span.is-on { background: var(--olive-700); }
