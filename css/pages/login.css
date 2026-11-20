@@ -1,7 +1,7 @@
 /* Tela de login: cabeçalho com logo, painel verde com foto à esquerda e formulário à direita. */
 .login { min-height: 100vh; display: flex; flex-direction: column; }
 .login__top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 28px 56px 24px; }
-.login__logo img { height: 32px; width: auto; }
+.login__logo img { height: 60px; width: auto; }
 .login__top-right { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: .85rem; }
 .help-link { display: inline-flex; align-items: center; gap: 8px; color: var(--wine-800); font-weight: 600; min-height: 44px; }
 .help-link:hover { text-decoration: underline; }
