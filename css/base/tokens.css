@@ -7,15 +7,17 @@
   --olive-200: #d6d6b5;
   /* Vinho: botões principais, item ativo e links */
   --wine-800: #5d0319;
-  --wine-50: #f3e3e5;
+  --wine-50: #f2e8e9;
   /* Fundo da aplicação e do menu lateral */
   --cream: #f7f7ea;
-  --sidebar-bg: #fdfcf6;
+  --sidebar-bg: #fffffa;
+  /* Fundo dos cards e do campo de busca */
+  --surface: #fffffa;
   --white: #ffffff;
   /* Cores de texto e bordas; --muted tem contraste mínimo AA */
   --text: #2f1b1a;
   --muted: #5f5f4e; /* contraste AA sobre o fundo creme */
-  --line: #e6e1cc;
+  --line: #ebebdd;
   --pos: #3f6b2a;
   /* Arredondamento dos cards e dos campos */
   --radius: 16px;

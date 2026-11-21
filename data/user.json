@@ -1,4 +1,4 @@
-{"nome":"Maria","cpf":"12345678909","senha":"12345678","email":"maria@email.com","telefone":"(47) 99999-0042","agencia":"0001","conta":"4821-0","saldo":4322.55,
-"cartao":{"final":"4821","status":"Ativo, pronto para usar","limite":3000,"fatura":612.40,"vencimento":"10/12"},
+{"nome":"Maria","cpf":"12345678909","senha":"12345678","email":"maria@email.com","telefone":"(47) 99999-0042","agencia":"0001","conta":"4821-0","saldo":4322.55,"variacaoMes":4.8,
+"cartao":{"final":"4821","status":"Ativo · pronto para usar","limite":3000,"fatura":612.40,"vencimento":"10/12"},
 "credito":{"limite":5000,"taxa":2.5},
 "chavesPix":[{"tipo":"CPF","valor":"***.456.789-**"},{"tipo":"E-mail","valor":"maria@email.com"},{"tipo":"Celular","valor":"(47) 99999-0042"}]}

@@ -24,9 +24,14 @@
 .icon[data-icon="scan-face"] { --icon: url("../../assets/icons/icon-scan-face.svg"); }
 .icon[data-icon="scan-line"] { --icon: url("../../assets/icons/icon-scan-line.svg"); }
 .icon[data-icon="seguro"] { --icon: url("../../assets/icons/icon-seguro.svg"); }
-.icon[data-icon="investimentos"] { --icon: url("../../assets/icons/icon-investimentos.svg"); }
+.icon[data-icon="investimentos"] { --icon: url("../../assets/icons/chart-no-axes-combined.svg"); }
 .card-photo { max-width: 160px; height: auto; border-radius: 8px; }
 .grid--6 { grid-template-columns: repeat(6, 1fr); }
 @media (max-width: 900px) { .grid--6 { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .grid--6 { grid-template-columns: repeat(2, 1fr); } }
 .quick .icon { color: var(--wine-800); width: 24px; height: 24px; }
+/* Link com seta (ex.: 'Gerenciar cartões ↗') */
+.link--arrow { display: inline-flex; align-items: center; gap: 8px; }
+.link--arrow .ico { width: 16px; height: 16px; }
+/* Ícones desenhados direto no HTML (SVG inline): herdam a cor do texto */
+.ico { display: inline-block; flex: none; width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }

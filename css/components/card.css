@@ -1,6 +1,6 @@
 /* Cards e grades de layout. */
 /* Caixa branca com borda e cantos arredondados */
-.card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: flex; flex-direction: column; gap: 12px; }
 /* Card de destaque em verde-oliva */
 .card--olive { background: var(--olive-700); border-color: var(--olive-700); color: var(--white); }
 .card--olive .muted, .card--olive small { color: #e3e3c4; }

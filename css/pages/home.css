@@ -1,16 +1,74 @@
 /* Tela Início. */
+/* Ritmo vertical e cabeçalho da página (medidas do Figma) */
+[data-page="home"] .content { gap: 24px; padding-top: 24px; }
+[data-page="home"] .page-head { align-items: center; }
+[data-page="home"] h1 { font-size: 1.75rem; line-height: 1.25; }
+[data-page="home"] .page-head .muted { font-size: .875rem; margin-top: 4px; }
+
+/* No desktop as duas fileiras de cards usam a mesma divisão (~2,2 : 1) */
+@media (min-width: 901px) { .home-grid { grid-template-columns: minmax(0, 2.22fr) minmax(0, 1fr); gap: 24px; } }
+
 /* Card de saldo */
-.balance { display: flex; flex-direction: column; gap: 8px; }
-.balance__value { font-size: 2rem; font-weight: 700; }
-.balance .link { color: var(--white); }
+.balance { padding: 24px 28px; gap: 0; min-height: 193px; }
+.balance__head { display: flex; justify-content: space-between; align-items: center; font-size: .9375rem; color: rgba(255, 255, 255, .85); }
+.balance__eye { display: grid; place-items: center; width: 32px; height: 32px; margin: -4px -4px 0 0; padding: 0; border: 0; border-radius: 50%; background: none; color: var(--white); }
+.balance__eye:hover { background: rgba(255, 255, 255, .12); }
+.balance__row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; padding-top: 4px; padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, .2); }
+.balance__value { font-size: 2.25rem; font-weight: 500; line-height: 1.2; }
+.balance__trend { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: rgba(0, 0, 0, .2); color: #e3e3c4; font-size: .75rem; white-space: nowrap; }
+.balance__trend .ico { width: 16px; height: 16px; }
+.balance__extract { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; color: var(--white); font-size: .9375rem; }
+.balance__extract .ico { width: 20px; height: 20px; }
+
+/* Card do cartão */
+.flash { padding: 24px; gap: 16px; min-height: 193px; }
+.flash h2 { font-size: 1rem; font-weight: 600; }
+.flash__icon { color: var(--wine-800); }
+.flash__body { display: flex; align-items: center; gap: 16px; }
+.flash__card { width: 94px; height: 58px; border-radius: 10px; flex: none; }
+.flash__body p { font-size: .9375rem; }
+.flash__body small { color: var(--olive-700); font-size: .8125rem; }
+.flash .link { font-size: .875rem; }
+
 /* Atalhos de ações rápidas */
-.quick { display: flex; flex-direction: column; gap: 4px; padding: 14px; }
-.quick strong { color: var(--wine-800); }
-/* Linha de movimentação (descrição à esquerda, valor à direita) */
-.tx { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
-.tx:last-child { border-bottom: 0; }
+.quick-actions { display: flex; flex-direction: column; gap: 16px; }
+.quick { display: flex; flex-direction: column; gap: 4px; padding: 16px 14px; }
+.quick .icon { margin-bottom: 4px; }
+.quick strong { color: var(--wine-800); font-size: .875rem; }
+.quick small { font-size: .75rem; }
+
+/* Últimas movimentações */
+.home-grid .card { padding: 24px; }
+.card__head .link { font-size: .8125rem; }
+#movs { margin-top: 12px; }
+.tx { display: grid; grid-template-columns: 40px minmax(0, 150px) minmax(0, 1fr) auto; align-items: center; column-gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.tx__icon { width: 40px; height: 40px; }
+/* Ícones sem arquivo próprio: quadradinho verde-claro com o ícone do menu dentro */
+.tx__icon--tile { display: grid; place-items: center; border-radius: 14px; background: var(--olive-100); color: var(--olive-700); }
+.tx__icon--tile .icon { width: 20px; height: 20px; }
+.tx__info strong { display: block; font-size: .9375rem; }
 .tx small { display: block; }
-/* Barrinhas de progresso do card 'Pequenos passos' */
-.steps { display: flex; gap: 4px; }
-.steps span { flex: 1; height: 14px; border-radius: 3px; background: var(--olive-300); }
+.tx__cat { color: var(--muted); font-size: .8125rem; }
+.tx__valor { font-size: .9375rem; text-align: right; }
+.tx .pos { color: var(--olive-700); }
+@media (max-width: 560px) {
+  .tx { grid-template-columns: 40px minmax(0, 1fr) auto; grid-template-areas: "icone info valor" "icone cat valor"; }
+  .tx__icon { grid-area: icone; } .tx__info { grid-area: info; } .tx__cat { grid-area: cat; } .tx__valor { grid-area: valor; }
+}
+
+/* Card 'Pequenos passos' */
+.card--journey { background: #e5e5d8; border-color: #e5e5d8; gap: 14px; }
+.card__head--top { align-items: flex-start; }
+.card--journey .icon { color: var(--olive-700); }
+.journey__title { font-size: 1rem; font-weight: 600; }
+.journey__title span { display: block; }
+.journey__accent { margin-top: 10px; color: var(--olive-700); font-size: 1.375rem; font-weight: 400; }
+/* Barrinhas de progresso: crescem da esquerda para a direita, alinhadas embaixo */
+.steps { display: flex; align-items: flex-end; gap: 6px; margin-top: 4px; }
+.steps span { flex: 1; height: 23px; border-radius: 5px; background: var(--olive-200); }
 .steps span.is-on { background: var(--olive-700); }
+.steps span:nth-child(1) { height: 9px; }
+.steps span:nth-child(2) { height: 12px; }
+.steps span:nth-child(3) { height: 15px; }
+.steps span:nth-child(4) { height: 18px; }
+.steps span:nth-child(5) { height: 21px; }
