@@ -1,0 +1,23 @@
+<!-- Logo: o alt faz o link ter nome para leitores de tela. -->
+<a class="logo" href="{{root}}pages/home.html"><img src="{{root}}assets/icons/Logo.svg" alt="FlashBank, ir para o início"></a>
+<span class="sidebar__label" id="sidebar-label">Sua conta</span>
+<!-- Navegação principal; data-nav casa com data-page para marcar o item ativo -->
+<nav class="nav" aria-labelledby="sidebar-label">
+  <a href="{{root}}pages/home.html" data-nav="home"><span class="icon" data-icon="casa" aria-hidden="true"></span>Início</a>
+  <a href="{{root}}pages/minha-conta.html" data-nav="account"><span class="icon" data-icon="carteira" aria-hidden="true"></span>Minha conta</a>
+  <a href="{{root}}pages/pix.html" data-nav="pix"><span class="icon" data-icon="pix" aria-hidden="true"></span>Pix</a>
+  <a href="{{root}}pages/cartoes.html" data-nav="cards"><span class="icon" data-icon="cartao" aria-hidden="true"></span>Cartões</a>
+  <a href="{{root}}pages/investimentos.html" data-nav="investments"><span class="icon" data-icon="investimentos" aria-hidden="true"></span>Investimentos</a>
+  <a href="{{root}}pages/cofrinhos.html" data-nav="savings"><span class="icon" data-icon="cofrinho" aria-hidden="true"></span>Cofrinhos</a>
+  <a href="{{root}}pages/credito.html" data-nav="credit"><span class="icon" data-icon="dinheiro" aria-hidden="true"></span>Crédito</a>
+</nav>
+<!-- Rodapé do menu: card de conversa e botão de sair -->
+<div class="sidebar__bottom">
+  <div class="chat-card">
+    <span class="icon icon--lg" data-icon="mensagem" aria-hidden="true"></span>
+    <strong>Vamos conversar?</strong>
+    <span>Conte com a gente para o que precisar.</span>
+    <a href="#" data-soon>Falar com o FlashBank <svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5.833 14.167 14.167 5.833M6.667 5.833h7.5v7.5"/></svg></a>
+  </div>
+  <button class="logout" id="logout" type="button"><span class="icon" data-icon="log-out" aria-hidden="true"></span>Sair da conta</button>
+</div>

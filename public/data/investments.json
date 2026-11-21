@@ -1,0 +1,18 @@
+{
+  "total": 5550.58,
+  "rendimento": 266.83,
+  "disponivel": 1500.00,
+  "evolucao": {
+    "1m":   { "legenda": "último mês",       "labels": ["Sem 1","Sem 2","Sem 3","Sem 4"], "valores": [5498, 5510, 5528, 5550.58] },
+    "6m":   { "legenda": "últimos 6 meses",  "labels": ["Jun","Jul","Ago","Set","Out","Nov"], "valores": [5398, 5450, 5472, 5462, 5525, 5550.58] },
+    "1a":   { "legenda": "últimos 12 meses", "labels": ["Dez","Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov"], "valores": [5300, 5320, 5305, 5370, 5385, 5405, 5398, 5450, 5472, 5462, 5525, 5550.58] },
+    "tudo": { "legenda": "desde o início",   "labels": ["Jan/25","Abr/25","Jul/25","Out/25","Jan/26","Abr/26","Jul/26","Nov/26"], "valores": [3000, 3350, 3700, 4100, 4500, 4900, 5300, 5550.58] }
+  },
+  "itens": [
+    { "produto": "Cofrinhos",     "saldo": 3190.33, "cor": "#5b5e27" },
+    { "produto": "Previdência",   "saldo": 1100.11, "cor": "#5d0319" },
+    { "produto": "CDB",           "saldo": 660.06,  "cor": "#9b9d62" },
+    { "produto": "LCI e LCA",     "saldo": 550.05,  "cor": "#c6b18d" },
+    { "produto": "A classificar", "saldo": 50.03,   "cor": "#d6d6c8", "pendente": true }
+  ]
+}
