@@ -1,31 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlashBank · Pix</title>
-  <link rel="stylesheet" href="../css/main.css">
-</head>
-<body class="app" data-page="pix" data-root="../">
-  <!-- Menu lateral-->
-  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
-  <!-- Cabeçalho-->
-  <header id="topbar" class="topbar"></header>
-  <main class="content">
-    <div class="page-head"><div><h1>Pix</h1><p class="muted">Envie dinheiro na hora, a qualquer momento.</p></div><a class="btn btn--outline" href="home.html">Voltar ao início</a></div>
-    <div class="grid grid--2">
-      <section class="card"><h2>Enviar Pix</h2><small>Saldo disponível: <b id="pix-saldo"></b></small>
-        <form class="stack" id="pix-form" novalidate>
-          <label class="field">Chave do destinatário<input id="pix-chave" placeholder="CPF, e-mail, celular ou chave aleatória"></label>
-          <label class="field">Valor (R$)<input id="pix-valor" type="number" min="0.01" step="0.01" placeholder="0,00"></label>
-          <p class="form-error" id="pix-error" role="alert"></p><p class="form-ok" id="pix-ok" role="status"></p>
-          <button class="btn btn--primary" type="submit">Enviar Pix</button>
-        </form>
-      </section>
-      <section class="card"><h2>Minhas chaves</h2><ul id="pix-chaves"></ul><a class="link" href="home.html">Ver movimentações na Home</a></section>
-    </div>
-  </main>
-  <footer class="footer"><span>FlashBank. Com você em cada plano.</span><span>Privacidade · Segurança · Ajuda</span></footer>
-  <script type="module" src="../js/app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f7ea" />
+    <title>FlashBank · Pix</title>
+  </head>
+  <body data-page="pix" data-root="../">
+    <div id="root"></div>
+    <script type="module" src="../src/pix-main.jsx"></script>
+  </body>
 </html>

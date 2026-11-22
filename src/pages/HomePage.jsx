@@ -165,7 +165,7 @@ function HomePage() {
                   }}>Ver todas</a>
                 </div>
                 <ul id="movs">
-                  {account.txBase.slice(0, 3).map((transaction, index) => {
+                  {account.tx.slice(0, 3).map((transaction, index) => {
                     const [when, category = ''] = transaction.detalhe.split(' · ')
                     const icon = getTransactionIcon(transaction)
                     return (
