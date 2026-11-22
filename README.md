@@ -24,6 +24,8 @@ O login fica em `index.html`. Cada tela interna tem um HTML em `pages/` que carr
 
 CPF `123.456.789-09` · senha `12345678`.
 
+Também é possível criar contas pela tela de login. O cadastro, a sessão e os dados de cada conta são armazenados no `localStorage` do navegador e separados pelo CPF. Como não há servidor, esse fluxo serve apenas para demonstração; não use dados reais nem senhas importantes.
+
 ## Estrutura
 
 - `src/components/`: shell reutilizável, sidebar, topbar e avisos

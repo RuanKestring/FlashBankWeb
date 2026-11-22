@@ -1,17 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
 import logo from './assets/icons/Logo.svg'
-import demoUser from './data/user.json'
-import { login, isLogged } from './lib/auth.js'
+import { authenticate, isLogged, login } from './lib/auth.js'
+import { findUserByCpf, getDefaultLoginUser, isValidCpf, registerAccount } from './lib/accounts.js'
 import { digits, formatCpf, maskCpf } from './lib/format.js'
-import { store } from './lib/store.js'
 
 const heroImage = '/images/imagem-tela-login.webp'
 
 function Login() {
   const [useSavedAccount, setUseSavedAccount] = useState(true)
-  const [user] = useState(() => ({ ...demoUser, ...store.get('profile', {}) }))
+  const [savedUser] = useState(getDefaultLoginUser)
+  const [creatingAccount, setCreatingAccount] = useState(false)
   const [cpf, setCpf] = useState('')
   const [password, setPassword] = useState('')
+  const [registration, setRegistration] = useState({ nome: '', cpf: '', email: '', telefone: '', senha: '', confirmarSenha: '' })
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
@@ -36,11 +37,11 @@ function Login() {
     setNotice(message)
   }
 
-  function handleSubmit(event) {
+  function handleLogin(event) {
     event.preventDefault()
     setError('')
 
-    const typedCpf = useSavedAccount ? user.cpf : digits(cpf)
+    const typedCpf = useSavedAccount ? savedUser.cpf : digits(cpf)
 
     if (typedCpf.length !== 11) {
       setError('Digite um CPF com 11 números.')
@@ -54,14 +55,56 @@ function Login() {
       return
     }
 
-    if (typedCpf !== user.cpf || password !== user.senha) {
+    const user = authenticate(typedCpf, password)
+    if (!user) {
       setError('CPF ou senha incorretos. Confira os dados e tente de novo.')
       return
     }
 
-    login(user)
     window.location.assign('/pages/home.html')
   }
+
+  function handleRegistration(event) {
+    event.preventDefault()
+    setError('')
+
+    if (!registration.nome.trim()) {
+      setError('Digite seu nome completo.')
+      return
+    }
+    if (!isValidCpf(registration.cpf)) {
+      setError('Digite um CPF válido.')
+      return
+    }
+    if (!/^\S+@\S+\.\S+$/.test(registration.email.trim())) {
+      setError('Digite um e-mail válido.')
+      return
+    }
+    if (digits(registration.telefone).length < 10) {
+      setError('Digite um telefone com DDD.')
+      return
+    }
+    if (registration.senha.length < 8) {
+      setError('A senha precisa ter pelo menos 8 caracteres.')
+      return
+    }
+    if (registration.senha !== registration.confirmarSenha) {
+      setError('As senhas não conferem.')
+      return
+    }
+
+    try {
+      const user = registerAccount(registration)
+      login(user)
+      window.location.assign('/pages/home.html')
+    } catch (registrationError) {
+      setError(registrationError.message)
+    }
+  }
+
+  const typedUser = creatingAccount
+    ? null
+    : useSavedAccount ? savedUser : findUserByCpf(cpf)
 
   return (
     <div className="login">
@@ -110,27 +153,27 @@ function Login() {
           </p>
         </section>
 
-        <form className="login__form" id="login-form" noValidate onSubmit={handleSubmit}>
+        <form className="login__form" id="login-form" noValidate onSubmit={creatingAccount ? handleRegistration : handleLogin}>
           <div className="login__user">
             <span className="avatar avatar--soft avatar--xl" aria-hidden="true">
               <span className="icon" data-icon="avatar" />
             </span>
-            <h2>{useSavedAccount || digits(cpf) === user.cpf ? `Olá, ${user.nome}` : 'Olá!'}</h2>
+            <h2>{typedUser ? `Olá, ${typedUser.nome}` : creatingAccount ? 'Crie sua conta' : 'Olá!'}</h2>
             <p className="muted">
-              {useSavedAccount ? 'Que bom ter você de volta.' : 'Digite seu CPF para entrar.'}
+              {creatingAccount ? 'Abra sua conta FlashBank.' : useSavedAccount ? 'Que bom ter você de volta.' : 'Digite seu CPF para entrar.'}
             </p>
           </div>
 
-          {useSavedAccount && (
+          {!creatingAccount && useSavedAccount && (
             <div className="saved-account" id="saved-account">
-              <span>CPF <b>{maskCpf(user.cpf)}</b></span>
+              <span>CPF <b>{maskCpf(savedUser.cpf)}</b></span>
               <button className="link" id="switch-account" type="button" onClick={() => setUseSavedAccount(false)}>
                 Trocar conta
               </button>
             </div>
           )}
 
-          {!useSavedAccount && (
+          {!creatingAccount && !useSavedAccount && (
             <div className="field" id="cpf-field">
               <label htmlFor="cpf">CPF</label>
               <input
@@ -148,6 +191,27 @@ function Login() {
             </div>
           )}
 
+          {creatingAccount && (
+            <>
+              <div className="field">
+                <label htmlFor="register-name">Nome completo</label>
+                <input id="register-name" autoComplete="name" value={registration.nome} onChange={(event) => setRegistration({ ...registration, nome: event.target.value })} />
+              </div>
+              <div className="field">
+                <label htmlFor="register-cpf">CPF</label>
+                <input id="register-cpf" inputMode="numeric" autoComplete="username" placeholder="000.000.000-00" maxLength={14} value={registration.cpf} onChange={(event) => setRegistration({ ...registration, cpf: formatCpf(event.target.value) })} />
+              </div>
+              <div className="field">
+                <label htmlFor="register-email">E-mail</label>
+                <input id="register-email" type="email" autoComplete="email" value={registration.email} onChange={(event) => setRegistration({ ...registration, email: event.target.value })} />
+              </div>
+              <div className="field">
+                <label htmlFor="register-phone">Celular</label>
+                <input id="register-phone" type="tel" autoComplete="tel" inputMode="tel" value={registration.telefone} onChange={(event) => setRegistration({ ...registration, telefone: event.target.value })} />
+              </div>
+            </>
+          )}
+
           <div className="field field--password">
             <label htmlFor="senha">Senha</label>
             <div className="input-wrap">
@@ -155,11 +219,14 @@ function Login() {
                 id="senha"
                 name="senha"
                 type={showPassword ? 'text' : 'password'}
-                autoComplete="current-password"
+                autoComplete={creatingAccount ? 'new-password' : 'current-password'}
                 placeholder="Sua senha"
                 aria-describedby="login-error"
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                value={creatingAccount ? registration.senha : password}
+                onChange={(event) => {
+                  if (creatingAccount) setRegistration({ ...registration, senha: event.target.value })
+                  else setPassword(event.target.value)
+                }}
               />
               <button
                 className="icon-btn icon-btn--soft"
@@ -182,30 +249,57 @@ function Login() {
               </button>
             </div>
             <a
+              hidden={creatingAccount}
               className="link forgot"
               href="#recuperar-senha"
               onClick={(event) => showComingSoon(event, 'A recuperação de senha chega em breve.')}
             >
               Esqueceu a senha?
             </a>
+            {creatingAccount && (
+              <div className="field">
+                <label htmlFor="confirmar-senha">Confirmar senha</label>
+                <input
+                  id="confirmar-senha"
+                  type={showPassword ? 'text' : 'password'}
+                  autoComplete="new-password"
+                  value={registration.confirmarSenha}
+                  onChange={(event) => setRegistration({ ...registration, confirmarSenha: event.target.value })}
+                />
+              </div>
+            )}
           </div>
 
           <p className="form-error" id="login-error" role="alert">{error}</p>
-          <button className="btn btn--primary btn--block btn--lg" type="submit">Entrar</button>
-          <div className="divider" role="separator"><span>ou</span></div>
-          <button
-            className="btn btn--outline btn--block btn--lg"
-            id="faceid"
-            type="button"
-            onClick={() => setNotice('Face ID disponível em breve.')}
-          >
-            <span className="icon" data-icon="scan-face" aria-hidden="true" />
-            Entrar com Face ID
-          </button>
+          <button className="btn btn--primary btn--block btn--lg" type="submit">{creatingAccount ? 'Criar conta' : 'Entrar'}</button>
+          {!creatingAccount && (
+            <>
+              <div className="divider" role="separator"><span>ou</span></div>
+              <button
+                className="btn btn--outline btn--block btn--lg"
+                id="faceid"
+                type="button"
+                onClick={() => setNotice('Face ID disponível em breve.')}
+              >
+                <span className="icon" data-icon="scan-face" aria-hidden="true" />
+                Entrar com Face ID
+              </button>
+            </>
+          )}
           <p className="login__note">
             <span className="icon" data-icon="cadeado" aria-hidden="true" />
-            Ambiente seguro. Seus dados estão protegidos.
+            {creatingAccount ? 'Demonstração: use dados fictícios; eles ficam neste navegador.' : 'Conta de demonstração; os dados ficam neste navegador.'}
           </p>
+          <button
+            className="link"
+            type="button"
+            onClick={() => {
+              setCreatingAccount((current) => !current)
+              setError('')
+            }}
+          >
+            {creatingAccount ? 'Já tem uma conta? Entrar' : 'Ainda não tem conta? Criar conta'}
+          </button>
         </form>
       </main>
 

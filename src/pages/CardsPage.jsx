@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import AppShell from '../components/AppShell.jsx'
 import { isLogged } from '../lib/auth.js'
-import { getAccount } from '../lib/bank.js'
+import { getAccount, getAccountValue, setAccountValue } from '../lib/bank.js'
 import { brl } from '../lib/format.js'
 import { store } from '../lib/store.js'
 
 function CardsPage() {
   const [user, setUser] = useState(null)
-  const [blocked, setBlocked] = useState(() => store.get('cartaoBloqueado', false))
+  const [blocked, setBlocked] = useState(() => getAccountValue('cardBlocked', false))
   const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
 
@@ -34,7 +34,7 @@ function CardsPage() {
   function toggleBlocked() {
     const next = !blocked
     setBlocked(next)
-    store.set('cartaoBloqueado', next)
+    setAccountValue('cardBlocked', next)
   }
 
   const userName = user?.nome ?? store.get('session')?.nome ?? 'Cliente'

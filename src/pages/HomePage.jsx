@@ -3,7 +3,7 @@ import iconCart from '../assets/icons/icon-carrinho-compra.svg'
 import iconCar from '../assets/icons/icon-carro.svg'
 import AppShell from '../components/AppShell.jsx'
 import { isLogged } from '../lib/auth.js'
-import { getAccount } from '../lib/bank.js'
+import { getAccount, getAccountValue, setAccountValue } from '../lib/bank.js'
 import { brl } from '../lib/format.js'
 import { store } from '../lib/store.js'
 
@@ -23,7 +23,7 @@ function getTransactionIcon(transaction) {
 function HomePage() {
   const [account, setAccount] = useState(null)
   const [error, setError] = useState('')
-  const [balanceHidden, setBalanceHidden] = useState(() => store.get('saldoHidden', false))
+  const [balanceHidden, setBalanceHidden] = useState(() => getAccountValue('balanceHidden', false))
   const [notice, setNotice] = useState('')
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function HomePage() {
   function toggleBalance() {
     const next = !balanceHidden
     setBalanceHidden(next)
-    store.set('saldoHidden', next)
+    setAccountValue('balanceHidden', next)
   }
 
   const notify = (message) => setNotice(message)
@@ -130,7 +130,7 @@ function HomePage() {
                   <img className="flash__card" src="/images/cartao-fisico.png" alt="Cartão físico FlashBank" width="94" height="58" fetchPriority="high" />
                   <div>
                     <p>FlashBank •••• {account.user.cartao.final}</p>
-                    <small>{store.get('cartaoBloqueado', false) ? 'Cartão bloqueado' : account.user.cartao.status}</small>
+                    <small>{getAccountValue('cardBlocked', false) ? 'Cartão bloqueado' : account.user.cartao.status}</small>
                   </div>
                 </div>
                 <a className="link link--arrow" href="cartoes.html">

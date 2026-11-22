@@ -1,5 +1,12 @@
 // Armazenamento local compartilhado pelas telas React.
 export const store = {
+  has(key) {
+    try {
+      return localStorage.getItem(`flashbank:${key}`) !== null
+    } catch {
+      return false
+    }
+  },
   get(key, fallback = null) {
     try {
       const value = localStorage.getItem(`flashbank:${key}`)
@@ -11,8 +18,10 @@ export const store = {
   set(key, value) {
     try {
       localStorage.setItem(`flashbank:${key}`, JSON.stringify(value))
+      return true
     } catch {
       // O site continua utilizável quando o navegador bloqueia o armazenamento.
+      return false
     }
   },
   remove(key) {

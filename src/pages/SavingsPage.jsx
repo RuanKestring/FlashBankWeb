@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import AppShell from '../components/AppShell.jsx'
 import { isLogged } from '../lib/auth.js'
-import { addTx, getAccount } from '../lib/bank.js'
+import { addTx, getAccount, getAccountValue, getSavingsGoalsForAccount, setAccountValue } from '../lib/bank.js'
 import { brl } from '../lib/format.js'
 import { store } from '../lib/store.js'
-import savingsGoals from '../data/cofrinhos.json'
 
 function SavingsPage() {
-  const [goals, setGoals] = useState(null)
-  const [goalExtras, setGoalExtras] = useState(() => store.get('cofrinhos', {}))
+  const [goals] = useState(getSavingsGoalsForAccount)
+  const [goalExtras, setGoalExtras] = useState(() => getAccountValue('savings', {}))
   const [account, setAccount] = useState(null)
   const [selectedGoal, setSelectedGoal] = useState('')
   const [amount, setAmount] = useState('')
@@ -26,12 +25,11 @@ function SavingsPage() {
     Promise.resolve(getAccount())
       .then((currentAccount) => {
         if (!active) return
-        setGoals(savingsGoals)
         setAccount(currentAccount)
-        setSelectedGoal(savingsGoals[0]?.id ?? '')
+        setSelectedGoal(goals[0]?.id ?? '')
       })
     return () => { active = false }
-  }, [])
+  }, [goals])
 
   useEffect(() => {
     if (!notice) return undefined
@@ -66,7 +64,7 @@ function SavingsPage() {
       ...goalExtras,
       [selectedGoal]: (goalExtras[selectedGoal] || 0) + value,
     }
-    store.set('cofrinhos', nextExtras)
+    setAccountValue('savings', nextExtras)
     setGoalExtras(nextExtras)
     addTx(`Cofrinho ${goal.nome}`, 'Agora · Dinheiro guardado', -value)
     setAccount({ ...currentAccount, saldo: currentAccount.saldo - value })

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import AppShell from '../components/AppShell.jsx'
 import { isLogged, login } from '../lib/auth.js'
-import { getAccount } from '../lib/bank.js'
+import { getAccount, getAccountValue, setAccountValue } from '../lib/bank.js'
 import { maskCpf, maskEmail, maskPhone } from '../lib/format.js'
 import { store } from '../lib/store.js'
 
@@ -25,7 +25,7 @@ function AccountPage() {
     getAccount()
       .then(({ user: base }) => {
         if (!active) return
-        const profile = { ...base, ...store.get('profile', {}) }
+        const profile = { ...base, ...getAccountValue('profile', {}, base.cpf) }
         setUser(profile)
         setDraft({ nome: profile.nome, email: profile.email, telefone: profile.telefone })
       })
@@ -61,7 +61,7 @@ function AccountPage() {
       telefone: draft.telefone.trim(),
     }
     const updatedUser = { ...user, ...profile }
-    store.set('profile', profile)
+    setAccountValue('profile', profile, user.cpf)
     login(updatedUser)
     setUser(updatedUser)
     setDraft(profile)

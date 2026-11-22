@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import AppShell from '../components/AppShell.jsx'
 import { isLogged } from '../lib/auth.js'
 import { brl } from '../lib/format.js'
+import { getInvestmentsForAccount } from '../lib/bank.js'
 import { store } from '../lib/store.js'
-import investments from '../data/investments.json'
 
 const ranges = [
   { id: '1m', label: '1M' },
@@ -60,7 +60,7 @@ function LineChart({ series }) {
 }
 
 function InvestmentsPage() {
-  const data = investments
+  const data = getInvestmentsForAccount()
   const [range, setRange] = useState('1a')
   const [notice, setNotice] = useState('')
 
@@ -137,14 +137,14 @@ function InvestmentsPage() {
                   <div
                     className="donut"
                     role="img"
-                    aria-label={`Distribuição da carteira: ${data.itens.map((item) => `${item.produto} ${percent((item.saldo / data.total) * 100)}`).join(', ')}`}
-                    style={{ background: `conic-gradient(${data.itens.reduce((stops, item) => {
+                    aria-label={`Distribuição da carteira: ${data.itens.map((item) => `${item.produto} ${percent(data.total ? (item.saldo / data.total) * 100 : 0)}`).join(', ')}`}
+                    style={{ background: data.total ? `conic-gradient(${data.itens.reduce((stops, item) => {
                       const portion = (item.saldo / data.total) * 100
                       const start = stops.position
                       stops.parts.push(`${item.cor} ${start}% ${start + portion}%`)
                       stops.position += portion
                       return stops
-                    }, { parts: [], position: 0 }).parts.join(', ')})` }}
+                    }, { parts: [], position: 0 }).parts.join(', ')})` : 'var(--olive-100)' }}
                   >
                     <div className="donut__center"><strong>{data.itens.length}</strong><small>categorias</small></div>
                   </div>
@@ -153,7 +153,7 @@ function InvestmentsPage() {
                       <li key={item.produto}>
                         <i style={{ backgroundColor: item.cor }} aria-hidden="true" />
                         {item.produto}
-                        <b>{percent((item.saldo / data.total) * 100)}</b>
+                        <b>{percent(data.total ? (item.saldo / data.total) * 100 : 0)}</b>
                       </li>
                     ))}
                   </ul>
@@ -180,7 +180,7 @@ function InvestmentsPage() {
                       <tr key={item.produto}>
                         <td><span className="dot-cell"><i style={{ backgroundColor: item.cor }} aria-hidden="true" />{item.produto}</span></td>
                         <td>{brl(item.saldo)}</td>
-                        <td>{percent((item.saldo / data.total) * 100)}</td>
+                        <td>{percent(data.total ? (item.saldo / data.total) * 100 : 0)}</td>
                       </tr>
                     ))}
                   </tbody>

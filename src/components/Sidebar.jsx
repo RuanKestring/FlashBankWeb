@@ -10,7 +10,7 @@ const navigationItems = [
   { id: 'credit', label: 'Crédito', href: '/pages/credito.html', icon: 'dinheiro' },
 ]
 
-function Sidebar({ activePage, isOpen, onLogout, onNotify }) {
+function Sidebar({ activePage, isOpen, onLogout, onNotify, logoutButtonRef }) {
   return (
     <aside
       id="sidebar"
@@ -51,7 +51,7 @@ function Sidebar({ activePage, isOpen, onLogout, onNotify }) {
             </svg>
           </a>
         </div>
-        <button className="logout" type="button" onClick={onLogout}>
+        <button ref={logoutButtonRef} className="logout" type="button" onClick={onLogout}>
           <span className="icon" data-icon="log-out" aria-hidden="true" />
           Sair da conta
         </button>
