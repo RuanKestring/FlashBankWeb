@@ -1,35 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Consulte opções de crédito e simule parcelas no FlashBank.">
-  <title>FlashBank · Crédito</title>
-  <link rel="stylesheet" href="../css/main.css">
-</head>
-<body class="app" data-page="credit" data-root="../">
-  <!-- Menu lateral -->
-  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
-  <!-- Cabeçalho-->
-  <header id="topbar" class="topbar"></header>
-  <main class="content">
-    <div class="page-head"><div><h1>Crédito</h1><p class="muted">Simule antes de decidir. Valores de exemplo.</p></div><a class="btn btn--outline" href="cartoes.html">Ver cartões</a></div>
-    <div class="grid grid--3">
-      <section class="card card--olive stat"><small>Limite pré-aprovado</small><strong id="cr-limite"></strong></section>
-      <section class="card stat"><small>Taxa de exemplo</small><strong id="cr-taxa"></strong></section>
-      <section class="card stat"><small>Prazo máximo</small><strong>24 meses</strong></section>
-    </div>
-    <section class="card"><h2>Simular empréstimo</h2>
-      <form class="grid grid--3" id="cr-form" novalidate>
-        <label class="field">Valor (R$)<input id="cr-valor" type="number" min="100" step="50" placeholder="1000"></label>
-        <label class="field">Parcelas<select id="cr-parcelas"><option>6</option><option>12</option><option>18</option><option>24</option></select></label>
-        <button class="btn btn--primary" type="submit" style="align-self:end">Simular</button>
-      </form>
-      <p class="form-error" id="cr-error" role="alert"></p>
-      <div class="result" id="cr-result" hidden></div>
-    </section>
-  </main>
-  <footer class="footer"><span>FlashBank. Com você em cada plano.</span><span>Privacidade · Segurança · Ajuda</span></footer>
-  <script type="module" src="../js/app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Consulte opções de crédito e simule parcelas no FlashBank." />
+    <title>FlashBank · Crédito</title>
+  </head>
+  <body data-root="../">
+    <div id="root"></div>
+    <script type="module" src="../src/credit-main.jsx"></script>
+  </body>
 </html>
