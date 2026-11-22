@@ -1,20 +1,17 @@
 // Camada de dados da conta: combina JSONs de demonstração e alterações locais.
-import { getJSON } from './api.js'
 import { store } from './store.js'
+import baseUser from '../data/user.json'
+import baseTransactions from '../data/transactions.json'
 
 export async function getAccount() {
-  const [base, transactions] = await Promise.all([
-    getJSON('user'),
-    getJSON('transactions'),
-  ])
   const extra = store.get('tx', [])
-  const balance = base.saldo + extra.reduce((sum, transaction) => sum + transaction.valor, 0)
+  const balance = baseUser.saldo + extra.reduce((sum, transaction) => sum + transaction.valor, 0)
 
   return {
-    user: { ...base, ...store.get('profile', {}) },
+    user: { ...baseUser, ...store.get('profile', {}) },
     saldo: balance,
-    tx: [...extra, ...transactions],
-    txBase: transactions,
+    tx: [...extra, ...baseTransactions],
+    txBase: baseTransactions,
   }
 }
 

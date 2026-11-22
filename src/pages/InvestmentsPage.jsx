@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import AppShell from '../components/AppShell.jsx'
 import { isLogged } from '../lib/auth.js'
-import { getJSON } from '../lib/api.js'
 import { brl } from '../lib/format.js'
 import { store } from '../lib/store.js'
+import investments from '../data/investments.json'
 
 const ranges = [
   { id: '1m', label: '1M' },
@@ -60,9 +60,8 @@ function LineChart({ series }) {
 }
 
 function InvestmentsPage() {
-  const [data, setData] = useState(null)
+  const data = investments
   const [range, setRange] = useState('1a')
-  const [error, setError] = useState('')
   const [notice, setNotice] = useState('')
 
   useEffect(() => {
@@ -71,12 +70,6 @@ function InvestmentsPage() {
       return undefined
     }
 
-    let active = true
-    getJSON('investments')
-      .then((investments) => { if (active) setData(investments) })
-      .catch(() => { if (active) setError('Não foi possível carregar os investimentos.') })
-
-    return () => { active = false }
   }, [])
 
   useEffect(() => {
@@ -94,12 +87,7 @@ function InvestmentsPage() {
   return (
     <AppShell activePage="investments" userName={userName} onNotify={setNotice} notice={notice}>
       <main className="content" id="conteudo" tabIndex="-1">
-        {error ? (
-          <p className="form-error" role="alert">{error}</p>
-        ) : !data ? (
-          <p className="muted" role="status">Carregando os investimentos…</p>
-        ) : (
-          <>
+        <>
             <div className="page-head">
               <div>
                 <h1>Investimentos</h1>
@@ -207,8 +195,7 @@ function InvestmentsPage() {
                 <a className="link card-link" href="#explorar" onClick={notifyComingSoon}>Explorar investimentos</a>
               </section>
             </div>
-          </>
-        )}
+        </>
       </main>
     </AppShell>
   )

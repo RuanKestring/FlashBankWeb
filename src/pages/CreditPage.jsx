@@ -14,6 +14,7 @@ function CreditPage() {
   const [error, setError] = useState('')
   const [result, setResult] = useState(null)
   const [loadError, setLoadError] = useState('')
+  const [notice, setNotice] = useState('')
 
   useEffect(() => {
     if (!isLogged()) {
@@ -28,6 +29,12 @@ function CreditPage() {
 
     return () => { active = false }
   }, [])
+
+  useEffect(() => {
+    if (!notice) return undefined
+    const timeout = window.setTimeout(() => setNotice(''), 2500)
+    return () => window.clearTimeout(timeout)
+  }, [notice])
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -52,7 +59,7 @@ function CreditPage() {
   const userName = store.get('session')?.nome ?? 'Cliente'
 
   return (
-    <AppShell activePage="credit" userName={userName}>
+    <AppShell activePage="credit" userName={userName} onNotify={setNotice} notice={notice}>
       <main className="content" id="conteudo" tabIndex="-1">
         {loadError ? (
           <p className="form-error" role="alert">{loadError}</p>

@@ -12,14 +12,3 @@ export const formatCpf = (value) => digits(value).slice(0, 11)
   .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
 export const maskEmail = (email) => email.replace(/^(.{2}).*(@.*)$/, '$1•••$2')
 export const maskPhone = (phone) => `(••) •••••-••${digits(phone).slice(-2)}`
-
-// Mantido para avisos nas páginas que ainda são JavaScript puro.
-export function toast(message) {
-  const element = Object.assign(document.createElement('div'), {
-    className: 'toast',
-    textContent: message,
-    role: 'status',
-  })
-  document.body.append(element)
-  window.setTimeout(() => element.remove(), 2500)
-}

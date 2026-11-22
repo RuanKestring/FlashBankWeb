@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import logo from './assets/icons/Logo.svg'
-import heroImage from './assets/images/imagem-tela-login.webp'
-import user from '../data/user.json'
+import demoUser from './data/user.json'
 import { login, isLogged } from './lib/auth.js'
 import { digits, formatCpf, maskCpf } from './lib/format.js'
+import { store } from './lib/store.js'
+
+const heroImage = '/images/imagem-tela-login.webp'
 
 function Login() {
   const [useSavedAccount, setUseSavedAccount] = useState(true)
+  const [user] = useState(() => ({ ...demoUser, ...store.get('profile', {}) }))
   const [cpf, setCpf] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -57,7 +60,6 @@ function Login() {
     }
 
     login(user)
-    // A Home ainda é a página HTML antiga; ela será migrada numa etapa futura.
     window.location.assign('/pages/home.html')
   }
 
@@ -99,6 +101,7 @@ function Login() {
               alt="Mulher sorrindo enquanto usa o notebook em um ambiente aconchegante"
               width="1160"
               height="566"
+              fetchPriority="high"
             />
           </figure>
           <p className="hero__secure">
@@ -112,7 +115,7 @@ function Login() {
             <span className="avatar avatar--soft avatar--xl" aria-hidden="true">
               <span className="icon" data-icon="avatar" />
             </span>
-            <h2>{useSavedAccount ? `Olá, ${user.nome}` : 'Olá!'}</h2>
+            <h2>{useSavedAccount || digits(cpf) === user.cpf ? `Olá, ${user.nome}` : 'Olá!'}</h2>
             <p className="muted">
               {useSavedAccount ? 'Que bom ter você de volta.' : 'Digite seu CPF para entrar.'}
             </p>

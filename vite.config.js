@@ -5,17 +5,17 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const projectRoot = dirname(fileURLToPath(import.meta.url))
-const legacyPages = readdirSync(resolve(projectRoot, 'pages'))
+const pageEntries = readdirSync(resolve(projectRoot, 'pages'))
   .filter((file) => file.endsWith('.html'))
   .map((file) => resolve(projectRoot, 'pages', file))
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Mantém as páginas ainda não migradas disponíveis no build durante a transição.
+  // Produz um HTML separado para cada rota React.
   build: {
     rollupOptions: {
-      input: [resolve(projectRoot, 'index.html'), ...legacyPages],
+      input: [resolve(projectRoot, 'index.html'), ...pageEntries],
     },
   },
 })

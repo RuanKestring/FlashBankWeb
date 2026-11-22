@@ -1,6 +1,6 @@
 # FlashBankWeb
 
-Frontend do FlashBank, em migração gradual de HTML/CSS/JavaScript para React com Vite.
+Frontend de demonstração do FlashBank feito com React e Vite.
 
 ## Como rodar
 
@@ -18,7 +18,7 @@ npm run build
 npm run preview
 ```
 
-Durante a migração, as telas ainda não convertidas continuam como páginas HTML antigas. `pages/home.html` é uma entrada Vite que monta a Home React.
+O login fica em `index.html`. Cada tela interna tem um HTML em `pages/` que carrega sua entrada React correspondente em `src/`.
 
 ## Login de demonstração
 
@@ -27,9 +27,11 @@ CPF `123.456.789-09` · senha `12345678`.
 ## Estrutura
 
 - `src/components/`: shell reutilizável, sidebar, topbar e avisos
-- `src/pages/`: páginas React, incluindo Home
-- `src/lib/`: dados, autenticação, armazenamento e formatação compartilhados
+- `src/pages/`: telas React
+- `src/lib/`: autenticação simulada, armazenamento local e formatação
+- `src/data/`: dados JSON de demonstração compartilhados pelas telas
 - `src/assets/`: imagens e ícones importados pelo código React e CSS
-- `css/`: estilos compartilhados pelas telas React e pelas páginas HTML ainda não migradas
-- `public/`: dados, partials e logo servidos por URL para as páginas legadas
-- `js/`, `pages/`, `partials/` e `data/`: partes antigas mantidas durante a migração; `js/core/` reexporta módulos de `src/lib/`
+- `css/`: folhas de estilo compartilhadas pelo app
+- `public/`: favicon e imagem do login servidos diretamente pelo Vite
+
+Não há backend: o usuário de demonstração e os dados das telas são fixtures locais. O estado editável fica no `localStorage` do navegador.

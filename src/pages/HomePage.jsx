@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import iconCart from '../assets/icons/icon-carrinho-compra.svg'
 import iconCar from '../assets/icons/icon-carro.svg'
-import cardImage from '../assets/images/cartao-fisico.png'
 import AppShell from '../components/AppShell.jsx'
 import { isLogged } from '../lib/auth.js'
 import { getAccount } from '../lib/bank.js'
@@ -128,7 +127,7 @@ function HomePage() {
                   <span className="icon icon--lg flash__icon" data-icon="cartao" aria-hidden="true" />
                 </div>
                 <div className="flash__body">
-                  <img className="flash__card" src={cardImage} alt="Cartão físico FlashBank" width="94" height="58" />
+                  <img className="flash__card" src="/images/cartao-fisico.png" alt="Cartão físico FlashBank" width="94" height="58" fetchPriority="high" />
                   <div>
                     <p>FlashBank •••• {account.user.cartao.final}</p>
                     <small>{store.get('cartaoBloqueado', false) ? 'Cartão bloqueado' : account.user.cartao.status}</small>

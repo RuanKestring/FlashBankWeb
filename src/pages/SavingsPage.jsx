@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import AppShell from '../components/AppShell.jsx'
 import { isLogged } from '../lib/auth.js'
 import { addTx, getAccount } from '../lib/bank.js'
-import { getJSON } from '../lib/api.js'
 import { brl } from '../lib/format.js'
 import { store } from '../lib/store.js'
+import savingsGoals from '../data/cofrinhos.json'
 
 function SavingsPage() {
   const [goals, setGoals] = useState(null)
@@ -13,7 +13,6 @@ function SavingsPage() {
   const [selectedGoal, setSelectedGoal] = useState('')
   const [amount, setAmount] = useState('')
   const [error, setError] = useState('')
-  const [loadError, setLoadError] = useState('')
   const [success, setSuccess] = useState('')
   const [notice, setNotice] = useState('')
 
@@ -24,15 +23,13 @@ function SavingsPage() {
     }
 
     let active = true
-    Promise.all([getJSON('cofrinhos'), getAccount()])
-      .then(([baseGoals, currentAccount]) => {
+    Promise.resolve(getAccount())
+      .then((currentAccount) => {
         if (!active) return
-        setGoals(baseGoals)
+        setGoals(savingsGoals)
         setAccount(currentAccount)
-        setSelectedGoal(baseGoals[0]?.id ?? '')
+        setSelectedGoal(savingsGoals[0]?.id ?? '')
       })
-      .catch(() => { if (active) setLoadError('Não foi possível carregar os Cofrinhos.') })
-
     return () => { active = false }
   }, [])
 
@@ -58,13 +55,7 @@ function SavingsPage() {
       return
     }
 
-    let currentAccount
-    try {
-      currentAccount = await getAccount()
-    } catch {
-      setError('Não foi possível confirmar o saldo da conta.')
-      return
-    }
+    const currentAccount = await getAccount()
     if (value > currentAccount.saldo) {
       setAccount(currentAccount)
       setError(`Saldo insuficiente. Você tem ${brl(currentAccount.saldo)}.`)
@@ -93,9 +84,7 @@ function SavingsPage() {
   return (
     <AppShell activePage="savings" userName={userName} onNotify={setNotice} notice={notice}>
       <main className="content" id="conteudo" tabIndex="-1">
-        {loadError ? (
-          <p className="form-error" role="alert">{loadError}</p>
-        ) : !goalsWithBalances || !account ? (
+        {!goalsWithBalances || !account ? (
           <p className="muted" role="status">Carregando seus Cofrinhos…</p>
         ) : (
           <>

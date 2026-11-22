@@ -1,4 +1,4 @@
-// Armazenamento local compartilhado pelas telas React e legadas.
+// Armazenamento local compartilhado pelas telas React.
 export const store = {
   get(key, fallback = null) {
     try {
