@@ -18,7 +18,7 @@ npm run build
 npm run preview
 ```
 
-Durante a migração, as telas que ainda não foram convertidas continuam como páginas HTML antigas.
+Durante a migração, as telas ainda não convertidas continuam como páginas HTML antigas. `pages/home.html` é uma entrada Vite que monta a Home React.
 
 ## Login de demonstração
 
@@ -26,7 +26,10 @@ CPF `123.456.789-09` · senha `12345678`.
 
 ## Estrutura
 
-- `src/`: entrada React e telas/componentes migrados; `src/assets/` guarda assets importados por esses componentes
-- `public/`: cópias temporárias de arquivos estáticos que as páginas antigas ainda carregam por URL
-- `css/`, `js/`, `pages/`, `partials/` e `data/`: implementação antiga, mantida durante a migração
-- `assets/`: assets ainda usados pela implementação antiga, incluindo ícones referenciados pelo CSS legado
+- `src/components/`: shell reutilizável, sidebar, topbar e avisos
+- `src/pages/`: páginas React, incluindo Home
+- `src/lib/`: dados, autenticação, armazenamento e formatação compartilhados
+- `src/assets/`: imagens e ícones importados pelo código React e CSS
+- `css/`: estilos compartilhados pelas telas React e pelas páginas HTML ainda não migradas
+- `public/`: dados, partials e logo servidos por URL para as páginas legadas
+- `js/`, `pages/`, `partials/` e `data/`: partes antigas mantidas durante a migração; `js/core/` reexporta módulos de `src/lib/`

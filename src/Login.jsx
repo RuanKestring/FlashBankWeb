@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import logo from './assets/icons/Logo.svg'
 import heroImage from './assets/images/imagem-tela-login.webp'
 import user from '../data/user.json'
-import { login, isLogged } from '../js/core/auth.js'
-import { digits, formatCpf, maskCpf } from '../js/core/format.js'
+import { login, isLogged } from './lib/auth.js'
+import { digits, formatCpf, maskCpf } from './lib/format.js'
 
 function Login() {
   const [useSavedAccount, setUseSavedAccount] = useState(true)

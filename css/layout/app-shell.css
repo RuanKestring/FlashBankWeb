@@ -9,7 +9,7 @@
 .page-head { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
 .page-head__actions { display: flex; gap: 8px; flex-wrap: wrap; }
 /* Fundo escuro atrás do menu aberto no celular */
-.backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, .45); z-index: 20; }
+.backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, .45); border: 0; padding: 0; z-index: 20; }
 /* Tablet/celular: vira uma coluna e o menu sai do grid */
 @media (max-width: 900px) {
   .app { grid-template-columns: minmax(0, 1fr); }
