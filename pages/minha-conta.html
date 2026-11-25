@@ -1,81 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlashBank · Minha conta</title>
-  <link rel="stylesheet" href="../css/main.css">
-</head>
-<body class="app" data-page="account" data-root="../">
-  <!-- Menu lateral -->
-  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
-  <!-- Cabeçalho-->
-  <header id="topbar" class="topbar"></header>
-  <main class="content">
-    <div class="page-head">
-      <div><h1>Minha conta</h1><p class="muted">Seus dados e sua segurança, sempre à mão.</p></div>
-      <span class="secure-note"><span class="icon" data-icon="seguro" aria-hidden="true"></span>Ambiente seguro</span>
-    </div>
-
-    <section class="card profile" aria-labelledby="acc-nome">
-      <span class="avatar avatar--soft avatar--xl" aria-hidden="true"><span class="icon" data-icon="avatar"></span></span>
-      <div class="profile__info">
-        <h2 id="acc-nome">Maria</h2>
-        <small id="acc-cpf"></small>
-        <span class="badge"><span aria-hidden="true">✓</span> Conta ativa</span>
-      </div>
-      <button class="btn btn--outline" id="edit" type="button">Editar perfil</button>
-    </section>
-
-    <div class="grid grid--2">
-      <section class="card" aria-labelledby="t-dados">
-        <div><h2 id="t-dados">Dados pessoais</h2><small>Mantenha suas informações de contato atualizadas.</small></div>
-        <form class="fields" id="profile-form" novalidate>
-          <label class="field">Nome<input id="f-nome" readonly></label>
-          <label class="field">CPF<input id="f-cpf" readonly></label>
-          <label class="field">E-mail<input id="f-email" type="email" readonly></label>
-          <label class="field">Celular<input id="f-tel" type="tel" readonly></label>
-        </form>
-        <div class="edit-actions" id="edit-actions" hidden>
-          <button class="btn btn--primary" id="save" type="button">Salvar alterações</button>
-          <button class="btn btn--outline" id="cancel" type="button">Cancelar</button>
-        </div>
-      </section>
-
-      <section class="card" aria-labelledby="t-conta">
-        <div><h2 id="t-conta">Dados da conta</h2><small>FlashBank · Conta corrente</small></div>
-        <div class="account-data">
-          <div><small>Agência</small><strong id="acc-ag"></strong></div>
-          <div><small>Conta</small><strong id="acc-conta"></strong></div>
-        </div>
-        <button class="btn btn--outline" id="share" type="button">Compartilhar dados da conta</button>
-      </section>
-    </div>
-
-    <div class="grid grid--2">
-      <section class="card" aria-labelledby="t-seg">
-        <h2 id="t-seg">Segurança e acesso</h2>
-        <div class="access-list">
-          <a class="access-item" href="#" data-soon>
-            <span class="icon icon--lg" data-icon="cadeado" aria-hidden="true"></span>
-            <div><strong>Alterar senha</strong><small>Proteja o acesso à sua conta.</small></div>
-            <span class="icon" data-icon="avancar" aria-hidden="true"></span>
-          </a>
-          <a class="access-item" href="#" data-soon>
-            <span class="icon icon--lg" data-icon="celular" aria-hidden="true"></span>
-            <div><strong>Dispositivos conectados</strong><small>Gerencie seus acessos.</small></div>
-            <span class="icon" data-icon="avancar" aria-hidden="true"></span>
-          </a>
-        </div>
-      </section>
-      <section class="card card--soft" aria-labelledby="t-jeito">
-        <h2 class="title-icon" id="t-jeito"><span class="icon icon--lg" data-icon="seguro" aria-hidden="true"></span>Sua conta, do seu jeito</h2>
-        <p class="muted">Controle suas notificações e o uso dos seus dados.</p>
-        <a class="link card-link" href="#" data-soon>Gerenciar privacidade e preferências <span aria-hidden="true">↗</span></a>
-      </section>
-    </div>
-  </main>
-  <footer class="footer"><span>FlashBank. Com você, em cada passo.</span><span>Privacidade · Segurança · Ajuda</span></footer>
-  <script type="module" src="../js/app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f7ea" />
+    <meta name="description" content="Consulte e atualize seus dados pessoais e informações da conta FlashBank." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>FlashBank · Minha conta</title>
+  </head>
+  <body data-page="account">
+    <div id="root"></div>
+    <script type="module" src="../src/account-main.jsx"></script>
+  </body>
 </html>

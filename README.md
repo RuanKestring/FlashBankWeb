@@ -1,14 +1,39 @@
 # FlashBankWeb
 
-Front-end do FlashBank em HTML, CSS e JavaScript puro (módulos ES).
+Frontend de demonstração do FlashBank feito com React e Vite.
 
 ## Como rodar
-Abra a pasta no VS Code e use a extensão **Live Server** no `index.html`
-(os módulos e o `fetch` não funcionam abrindo o arquivo direto).
 
-Login de demonstração: CPF `123.456.789-09` · senha `12345678`.
+Requisitos: Node.js compatível com a versão do Vite instalada.
+
+```sh
+npm install
+npm run dev
+```
+
+O Vite informa o endereço local no terminal. Para gerar e visualizar a versão de produção:
+
+```sh
+npm run build
+npm run preview
+```
+
+O login fica em `index.html`. Cada tela interna tem um HTML em `pages/` que carrega sua entrada React correspondente em `src/`.
+
+## Login de demonstração
+
+CPF `123.456.789-09` · senha `12345678`.
+
+Também é possível criar contas pela tela de login. O cadastro, a sessão e os dados de cada conta são armazenados no `localStorage` do navegador e separados pelo CPF. Como não há servidor, esse fluxo serve apenas para demonstração; não use dados reais nem senhas importantes.
 
 ## Estrutura
-- `css/` estilos por camada (base, layout, components, pages)
-- `js/core` utilidades (auth, store, api, format) · `js/pages` um módulo por tela
-- `data/` JSONs que simulam a API · `partials/` sidebar e topbar compartilhadas
+
+- `src/components/`: shell reutilizável, sidebar, topbar e avisos
+- `src/pages/`: telas React
+- `src/lib/`: autenticação simulada, armazenamento local e formatação
+- `src/data/`: dados JSON de demonstração compartilhados pelas telas
+- `src/assets/`: imagens e ícones importados pelo código React e CSS
+- `css/`: folhas de estilo compartilhadas pelo app
+- `public/`: favicon e imagem do login servidos diretamente pelo Vite
+
+Não há backend: o usuário de demonstração e os dados das telas são fixtures locais. O estado editável fica no `localStorage` do navegador.

@@ -1,81 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlashBank · Investimentos</title>
-  <link rel="stylesheet" href="../css/main.css">
-</head>
-<body class="app" data-page="investments" data-root="../">
-  <!-- Menu lateral: o conteúdo é injetado por js/components/shell.js (partials/sidebar.html) -->
-  <aside id="sidebar" class="sidebar" aria-label="Menu lateral"></aside>
-  <!-- Cabeçalho: injetado a partir de partials/topbar.html -->
-  <header id="topbar" class="topbar"></header>
-  <!-- Conteúdo da página (ganha id='conteudo' para o link 'Ir para o conteúdo') -->
-  <main class="content">
-    <div class="page-head">
-      <div><h1>Investimentos</h1><p class="muted">Acompanhe sua carteira e planeje seus próximos passos.</p></div>
-      <div class="page-head__actions">
-        <button class="btn btn--outline" data-soon type="button">Resgatar</button>
-        <button class="btn btn--primary" data-soon type="button">Investir mais</button>
-      </div>
-    </div>
-
-    <!-- Resumo: total, rendimento e saldo disponível -->
-    <div class="grid grid--3">
-      <section class="card card--olive stat" aria-label="Total investido"><small>Total investido</small><strong id="inv-total"></strong></section>
-      <section class="card stat stat--accent" aria-label="Rendimento nos últimos 12 meses"><small>Rendimento nos últimos 12 meses</small><strong id="inv-rend"></strong></section>
-      <section class="card stat" aria-label="Disponível na conta investimento"><small>Disponível na conta investimento</small><strong id="inv-disp"></strong></section>
-    </div>
-
-    <div class="grid grid--2">
-      <!-- Gráfico de linha em SVG (montado pelo investments.js) -->
-      <section class="card chart" aria-labelledby="t-evolucao">
-        <div class="card__head">
-          <div><h2 id="t-evolucao">Evolução do patrimônio</h2><small id="chart-sub"></small></div>
-          <div class="tabs" role="group" aria-label="Período do gráfico" id="tabs">
-            <button type="button" data-range="1m" aria-pressed="false">1M</button>
-            <button type="button" data-range="6m" aria-pressed="false">6M</button>
-            <button type="button" data-range="1a" aria-pressed="true">1A</button>
-            <button type="button" data-range="tudo" aria-pressed="false">Tudo</button>
-          </div>
-        </div>
-        <div id="chart"></div>
-      </section>
-
-      <!-- Rosca com a participação de cada produto -->
-      <section class="card" aria-labelledby="t-dist">
-        <div><h2 id="t-dist">Distribuição da carteira</h2><small>Participação no total investido</small></div>
-        <div class="donut-wrap">
-          <div class="donut" id="donut" role="img" aria-label="Distribuição da carteira">
-            <div class="donut__center"><strong id="donut-n"></strong><small>categorias</small></div>
-          </div>
-          <ul class="legend" id="legend"></ul>
-        </div>
-        <small id="dist-note"></small>
-      </section>
-    </div>
-
-    <div class="grid grid--2">
-      <section class="card" aria-labelledby="t-meus">
-        <div class="card__head"><h2 id="t-meus">Meus investimentos</h2><a class="link" href="#" data-soon>Ver detalhes <span aria-hidden="true">↗</span></a></div>
-        <table class="table">
-          <thead><tr><th scope="col">Produto</th><th scope="col">Saldo atual</th><th scope="col">Participação</th></tr></thead>
-          <tbody id="inv-table"></tbody>
-        </table>
-      </section>
-      <section class="card card--muted next-step" aria-labelledby="t-next">
-        <h2 class="title-icon" id="t-next"><span class="icon icon--lg" data-icon="crescimento" aria-hidden="true"></span>O próximo passo é seu.</h2>
-        <p class="muted">Encontre opções que combinam com seus objetivos e seu momento de vida.</p>
-        <a class="link card-link" href="#" data-soon>Explorar investimentos</a>
-      </section>
-    </div>
-  </main>
-  <!-- Rodapé -->
-  <footer class="footer"><span>FlashBank. Com você, em cada passo.</span><span>Privacidade · Segurança · Ajuda</span></footer>
-  <!-- Carrega o app.js (decide o que rodar conforme data-page) -->
-  <script type="module" src="../js/app.js"></script>
-  <!-- Aviso se o site for aberto sem servidor (use o Live Server) -->
-  <script>if(location.protocol==="file:")document.body.insertAdjacentHTML("afterbegin",'<p class="file-warning" role="alert">Abra o projeto com o Live Server (clique direito no index.html &gt; Open with Live Server). Abrindo o arquivo direto, o menu e os dados não carregam.</p>');</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f7ea" />
+    <meta name="description" content="Acompanhe a evolução e a distribuição da sua carteira de investimentos FlashBank." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>FlashBank · Investimentos</title>
+  </head>
+  <body data-page="investments">
+    <div id="root"></div>
+    <script type="module" src="../src/investments-main.jsx"></script>
+  </body>
 </html>

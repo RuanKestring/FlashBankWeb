@@ -9,7 +9,13 @@
 .page-head { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
 .page-head__actions { display: flex; gap: 8px; flex-wrap: wrap; }
 /* Fundo escuro atrás do menu aberto no celular */
-.backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, .45); z-index: 20; }
+.backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, .45); border: 0; padding: 0; z-index: 20; }
+.logout-dialog-backdrop { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 20px; background: rgba(24, 18, 16, .52); }
+.logout-dialog { width: min(100%, 440px); padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 20px 60px rgba(24, 18, 16, .22); }
+.logout-dialog h2 { margin: 0; font-size: 1.25rem; }
+.logout-dialog p { margin: 10px 0 0; color: var(--muted); }
+.logout-dialog__actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+@media (max-width: 480px) { .logout-dialog { padding: 22px; } .logout-dialog__actions { flex-direction: column-reverse; } }
 /* Tablet/celular: vira uma coluna e o menu sai do grid */
 @media (max-width: 900px) {
   .app { grid-template-columns: minmax(0, 1fr); }
